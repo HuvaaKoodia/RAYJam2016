@@ -23,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
         if (inputX != 0 || inputY != 0)
         {
+            rb.velocity = Vector2.zero;
             //rb.transform.position += new Vector3(inputX * speed * Time.deltaTime, inputY * speed * Time.deltaTime);
             rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
         }
-        print(rb.velocity);
     }
 }
