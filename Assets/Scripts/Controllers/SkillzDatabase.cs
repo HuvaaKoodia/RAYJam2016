@@ -11,13 +11,14 @@ public enum SkillID
 	//Slowdown,
 	Rapidfire,
 	Shotgun,
-	//Trap,
+	Trap,
 	Lazor,
 	//Pet,
 	//Melee,
-	_Amount,
+	_AmountSkills,
 	None,
 	DestroySkill,
+	_AmountAll,
 }
 
 public class SkillzDatabase : MonoBehaviour
@@ -32,7 +33,7 @@ public class SkillzDatabase : MonoBehaviour
 		I = this;
 
 		//init database
-		int amount = (int) SkillID._Amount;
+		int amount = (int) SkillID._AmountAll;
 
 		types = new Type[amount];
 		icons = new Sprite[amount];
@@ -43,13 +44,16 @@ public class SkillzDatabase : MonoBehaviour
 		AddSkill(SkillID.Rapidfire, typeof(RapidFireSkill), "RapidfireIcon");
 		AddSkill(SkillID.Shotgun, typeof(ShotgunSkill), "ShotgunIcon");
 		AddSkill(SkillID.Lazor, typeof(LazorSkill), "LazorIcon");
+        AddSkill(SkillID.Trap, typeof(TrapSkill), "TrapIcon");
 		/*
 		AddSkill(SkillID.Seekers, typeof(BombSkill), "SeekersIcon");
 		AddSkill(SkillID.Slowdown, typeof(BombSkill), "SlowdownIcon");
-		AddSkill(SkillID.Trap, typeof(BombSkill), "TrapIcon");
+		
 		AddSkill(SkillID.Pet, typeof(BombSkill), "PetIcon");
 		AddSkill(SkillID.Melee, typeof(BombSkill), "MeleeIcon");
 		*/
+
+		AddSkill(SkillID.DestroySkill, typeof(LazorSkill), "SkullIcon");
 	}
 
 	private void AddSkill(SkillID id, Type type, string icon)
@@ -70,7 +74,7 @@ public class SkillzDatabase : MonoBehaviour
 
 	public SkillID GetRandomSkillID()
 	{
-		return (SkillID)UnityEngine.Random.Range(0, (int)SkillID._Amount);
+		return (SkillID)UnityEngine.Random.Range(0, (int)SkillID._AmountSkills);
 	}
 
     public int GetAmountOfSkill()

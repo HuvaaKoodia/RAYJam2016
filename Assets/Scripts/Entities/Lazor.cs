@@ -19,7 +19,7 @@ public class Lazor : MonoBehaviour
 		while (true) 
 		{
 
-			GraphicsParent.localScale = new Vector3 (SizeOverLifetimeCurve.Evaluate (time / Lifetime), 1, 1);
+			GraphicsParent.localScale = new Vector3 (1,SizeOverLifetimeCurve.Evaluate (time / Lifetime), 1);
 			Collider.size = new Vector3 (SizeOverLifetimeCurve.Evaluate (time / Lifetime), colliderHeight, 1);
 
 			time += Time.deltaTime;

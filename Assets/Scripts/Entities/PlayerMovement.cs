@@ -103,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
             if (rb.position.y > -Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY > 0) inputY = 0;
             rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime, transform.position.y + inputY * speed * Time.deltaTime));
 
+            rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
         }
      
         frame++;

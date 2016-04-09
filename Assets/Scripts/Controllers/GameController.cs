@@ -44,6 +44,8 @@ public class GameController : MonoBehaviour
 	{
 		while (true) 
 		{
+			Player.gameObject.SetActive (false);
+
 			//setup state
 			if (state == 0) 
 			{
@@ -67,21 +69,23 @@ public class GameController : MonoBehaviour
 				Player.SkillSystem.ReplaceSkill(1, skills[1]);
 				Player.SkillSystem.ReplaceSkill(2, skills[2]);
 
-				Player.SkillSystem.RefreshSkills ();
-
 				GUIController.I.UpdatePlayerSkills (Player.SkillSystem);
 
 				//wait until game starts
 				state = 1;
-				while (state == 0) yield return null;
+				while (GUIController.I.SlotMachineVisible) yield return null;
 			}
 
 			//gameplay state
 			if (state == 1)
 			{
+				Player.gameObject.SetActive (true);
+
 				RoundTime = 10f;
 			
 				EnemySpawner.I.StartWave ();
+
+				Player.SkillSystem.RefreshSkills ();
 
 				while (state == 1) 
 				{
@@ -96,6 +100,10 @@ public class GameController : MonoBehaviour
 						RoundTime = 0;
 
 						EnemySpawner.level++;
+
+						while (EnemySpawner.I.AmountOfEnemies != 0)
+							yield return null;
+
 						state = 2;
 						//round over goto intermission
 					}
@@ -107,15 +115,18 @@ public class GameController : MonoBehaviour
 			//intermission state
 			if (state == 2)
 			{
-				yield return new WaitForSeconds (4.5f);
-				state = 0;
+				Player.gameObject.SetActive (false);
 
-				//give player news skills, or remove some
-				while (state == 2) 
+				GUIController.I.ShowSlotMachinePanel ();
+
+				while (GUIController.I.SlotMachineVisible) yield return null;
 				{
-					
 					yield return null;
 				}
+
+				//new skills! New round!
+
+				state = 1;
 			}
 		}
 
