@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
 	void Awake() 
 	{
 		I = this;
+        RoundTime = 10.0f;
 	}
 
 	void Start()

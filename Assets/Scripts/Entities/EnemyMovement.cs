@@ -64,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
                         targetPos = player.transform.position;
                     }
                     else sprint -= 10 * Time.deltaTime;
-                    rb.MovePosition(Vector2.MoveTowards(rb.position, targetPos, speed * sprint * Time.deltaTime));
+                    rb.MovePosition(Vector2.MoveTowards(rb.position, targetPos, speed + (float)EnemySpawner.level/20 * sprint*2 * Time.deltaTime));
                     break;
                 }
             default: break;

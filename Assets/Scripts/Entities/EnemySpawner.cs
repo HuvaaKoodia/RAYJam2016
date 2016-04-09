@@ -3,9 +3,9 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static int level;
 
     public int enemyAmount;
-    public int level;
     float spawnTime;
     Vector2 field;
 
@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        level = 1;
         field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
-        print(field);
         enemies = new EnemyMovement[enemyAmount];
         StartCoroutine(Spawn(enemy, 1, Mathf.Clamp(0.15f*1/level,0.02f,1), field.x, field.y));
     }
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         spawnTime -= Time.deltaTime;
         if (spawnTime < 0)
         {
-            int spawnType = Random.Range(2, 3);
+            int spawnType = Random.Range(2, 5);
             float min = Random.Range(field.x, field.y);
             float max = min + 3; //+ Random.Range(0, 3);
 
@@ -63,23 +63,31 @@ public class EnemySpawner : MonoBehaviour
             }
 
             spawnTime = Mathf.Clamp(2-(float)level/5,1,2);
-            print(spawnTime);
         }
+
+        // TEST COMMANDS
         if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(Spawn(enemy, enemyAmount, 0.1f, -4, 2));
+        if (Input.GetKeyDown(KeyCode.Alpha1)) level = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) level = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) level = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) level = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) level = 5;
+        if (Input.GetKeyDown(KeyCode.Alpha0)) level = 10;
     }
 
     IEnumerator Spawn(EnemyMovement enemy, int amount, float spawnSpeed, float spawnMin, float spawnMax)
     {
-        if (enemy.enemyType == 1)
+        if (enemy.enemyType == 1) // Red blocks
         {
+            print("RoundTime " + GameController.I.RoundTime);
             while (GameController.I.RoundTime > 0)
             {
                 EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
-                def.speed = Random.Range(3, 5) + (float)level/10;
-                yield return new WaitForSeconds(spawnSpeed);
+                def.speed = Random.Range(3, 5) + (float)level/5;
+                yield return new WaitForSeconds(Mathf.Clamp(0.15f * 1 / level, 0.02f, 1));
             }
         }
-        else
+        else // Everything else as waves
         {
             for (int i = 0; i < amount; i++)
             {
