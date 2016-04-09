@@ -11,14 +11,24 @@ public class GameController : MonoBehaviour
 	public PlayerView Player;
 	public float RoundTime{get;private set;}
 
+	public bool PlayerDead{get;private set;}
+
 	private int state = 0;
 
 	void Awake() 
 	{
 		I = this;
         RoundTime = 10.0f;
+		PlayerDead = false;
+
+		Player.OnDeathEvent += OnPlayerDeath;
 	}
 
+	private void OnPlayerDeath ()
+	{
+		PlayerDead = true;
+	}
+		
 	void Start()
 	{
 		StartCoroutine (StateCoroutine ());
@@ -75,7 +85,7 @@ public class GameController : MonoBehaviour
 
 				while (state == 1) 
 				{
-					if (Player.Dead) 
+					if (PlayerDead) 
 					{
 						// game over and all that jazz
 					}

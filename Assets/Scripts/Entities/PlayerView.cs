@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerView : MonoBehaviour
 {
-	public bool Dead{ get; private set;}
-
 	public Rigidbody2D Rigidbody;
 	public Collider2D Collider;
 
 	public GameObject DeathParticles;
 	public PlayerSkillSystem SkillSystem;
+
+	public event System.Action OnDeathEvent;
 
 	public void Start()
 	{
@@ -18,7 +19,8 @@ public class PlayerView : MonoBehaviour
 
 	public void Die()
 	{
-		Dead = true;
+		if (OnDeathEvent != null)
+			OnDeathEvent ();
 
 		Instantiate (DeathParticles, transform.position, Quaternion.identity);
 		Destroy(gameObject);
