@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df10969ef19b7b44b04c5e645d52277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAmount: 55
+  enemyAmount: 100
   player: {fileID: 26050662}
   enemy: {fileID: 11416422, guid: 0892f34763fb28041a73728293c6b8e6, type: 2}
   enemy2: {fileID: 11460600, guid: e385a37500d8a9f4eb696881f97e9cc5, type: 2}
@@ -275,6 +275,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11403628, guid: 3dce569c006cb8841b0916904999f629, type: 2}
+      propertyPath: DeathParticles
+      value: 
+      objectReference: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
+    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
       propertyPath: DeathParticles
       value: 
       objectReference: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}

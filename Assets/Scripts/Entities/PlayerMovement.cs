@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public GameObject DeathParticles;
     Rigidbody2D rb;
     float inputX;
     float inputY;
