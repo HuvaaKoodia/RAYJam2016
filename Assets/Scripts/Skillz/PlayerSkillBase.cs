@@ -51,7 +51,7 @@ public class PlayerSkillBase : MonoBehaviour
 		{
 			currentActivation = i;
 			OnActivate ();
-			if (i < ShotsPerActivation - 1)
+			if (i < ShotsPerActivation - 1 && DelayBetweenActivations > 0)
 				yield return new WaitForSeconds (DelayBetweenActivations);
 		}
 

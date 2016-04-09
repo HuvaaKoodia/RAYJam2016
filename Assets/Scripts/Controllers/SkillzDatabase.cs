@@ -10,6 +10,7 @@ public enum SkillID
 	Dodge,
 	Slowdown,
 	Rapidfire,
+	Shotgun,
 	Trap,
 	Lazor,
 	Pet,
@@ -36,13 +37,14 @@ public class SkillzDatabase : MonoBehaviour
 		icons = new Sprite[amount];
 
 		AddSkill(SkillID.Bomb, typeof(BombSkill), "BombIcon");
-		AddSkill(SkillID.Shield, typeof(BombSkill), "ShieldIcon");
+		AddSkill(SkillID.Shield, typeof(ShieldSkill), "ShieldIcon");
 		AddSkill(SkillID.Seekers, typeof(BombSkill), "SeekersIcon");
-		AddSkill(SkillID.Dodge, typeof(BombSkill), "DodgeIcon");
+		AddSkill(SkillID.Dodge, typeof(DodgeSkill), "DodgeIcon");
 		AddSkill(SkillID.Slowdown, typeof(BombSkill), "SlowdownIcon");
-		AddSkill(SkillID.Rapidfire, typeof(BombSkill), "RapidfireIcon");
+		AddSkill(SkillID.Rapidfire, typeof(RapidFireSkill), "RapidfireIcon");
+		AddSkill(SkillID.Shotgun, typeof(ShotgunSkill), "ShotgunIcon");
 		AddSkill(SkillID.Trap, typeof(BombSkill), "TrapIcon");
-		AddSkill(SkillID.Lazor, typeof(BombSkill), "LazorIcon");
+		AddSkill(SkillID.Lazor, typeof(LazorSkill), "LazorIcon");
 		AddSkill(SkillID.Pet, typeof(BombSkill), "PetIcon");
 		AddSkill(SkillID.Melee, typeof(BombSkill), "MeleeIcon");
 	}

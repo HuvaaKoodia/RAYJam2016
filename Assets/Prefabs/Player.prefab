@@ -10,12 +10,15 @@ GameObject:
   - 4: {fileID: 445432}
   - 114: {fileID: 11407476}
   - 114: {fileID: 11403628}
-  - 114: {fileID: 11469598}
   - 50: {fileID: 5099714}
   - 61: {fileID: 6166054}
+  - 114: {fileID: 11469598}
   - 114: {fileID: 11445572}
   - 114: {fileID: 11407984}
   - 114: {fileID: 11462006}
+  - 114: {fileID: 11427516}
+  - 114: {fileID: 11421608}
+  - 114: {fileID: 11456772}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -39,6 +42,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &161734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406656}
+  - 212: {fileID: 21264158}
+  - 58: {fileID: 5884806}
+  m_Layer: 10
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &401104
 Transform:
   m_ObjectHideFlags: 1
@@ -51,6 +71,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445432}
   m_RootOrder: 0
+--- !u!4 &406656
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 25, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445432}
+  m_RootOrder: 1
 --- !u!4 &445432
 Transform:
   m_ObjectHideFlags: 1
@@ -62,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401104}
+  - {fileID: 406656}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5099714
@@ -81,6 +114,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5884806
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161734}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.085
 --- !u!61 &6166054
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -141,6 +188,42 @@ MonoBehaviour:
   ShotsPerActivation: 1
   DelayBetweenActivations: 0.1
   LazorPrefab: {fileID: 11424402, guid: efd667fc75d11f943a70aa4cd86e0b41, type: 2}
+--- !u!114 &11421608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebee69477868d4a439484f0626c87bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: 3
+  UsesPerRound: -1
+  ShotsPerActivation: 5
+  DelayBetweenActivations: 0
+  BulletPrefab: {fileID: 11443054, guid: e84f0ba4af41c3643bc6ee911d690e08, type: 2}
+  BulletSpeed: 35
+  BulletSpreadAngle: 90
+--- !u!114 &11427516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8bf7e1e9c38ca4c87d8831f5ca1501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: 1.5
+  UsesPerRound: -1
+  ShotsPerActivation: 3
+  DelayBetweenActivations: 0.12
+  BulletPrefab: {fileID: 11478808, guid: 1984679e164f4a14b986ae7eabb96abb, type: 2}
+  BulletSpeed: 16
+  BulletSpreadAngle: 10
 --- !u!114 &11445572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +240,24 @@ MonoBehaviour:
   ShotsPerActivation: 4
   DelayBetweenActivations: 0.1
   BombPrefab: {fileID: 11407916, guid: ee3f652621109e646861820ce45108b5, type: 2}
-  ShootSpeed: 10
+  BulletSpeed: 12
+--- !u!114 &11456772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5a0a51f96a5d04cbcd4960239cb33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: -1
+  UsesPerRound: 1
+  ShotsPerActivation: 1
+  DelayBetweenActivations: 0.5
+  ShieldObject: {fileID: 161734}
+  ShieldDuration: 2.5
 --- !u!114 &11462006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,9 +285,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Skills:
-  - {fileID: 11445572}
-  - {fileID: 11462006}
-  - {fileID: 11407984}
+  - {fileID: 11427516}
+  - {fileID: 11456772}
+  - {fileID: 11421608}
+--- !u!212 &21264158
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161734}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.39251733, g: 0.94666797, b: 0.9705882, a: 0.391}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!212 &21271848
 SpriteRenderer:
   m_ObjectHideFlags: 1
