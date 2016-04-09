@@ -12,6 +12,8 @@ public class PlayerSkillBase : MonoBehaviour
 
 	private bool activationRunning = false;
 
+	protected int currentActivation = 0;
+
 	void Awake()
 	{
 		skillSystem = GetComponent<PlayerSkillSystem>();
@@ -47,8 +49,8 @@ public class PlayerSkillBase : MonoBehaviour
 
 		for (int i = 0; i < ShotsPerActivation; i++) 
 		{
+			currentActivation = i;
 			OnActivate ();
-
 			if (i < ShotsPerActivation - 1)
 				yield return new WaitForSeconds (DelayBetweenActivations);
 		}

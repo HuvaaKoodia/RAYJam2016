@@ -63,5 +63,4 @@ public class PlayerMovement : MonoBehaviour
 		Dodging = false;
 		Player.SetKinematic (false);
 	}
-
 }
