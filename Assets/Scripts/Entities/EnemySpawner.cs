@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     float spawnTime;
     public static Vector2 field;
 
-    public PlayerView player;
+	public Transform EnemyParent;
 
     public EnemyMovement enemy; // Goes down
     public EnemyMovement enemy2; // Goes down with sprints
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame     
     void Update()
     {
-        if (GameController.I.RoundTime == 0 || GameController.I.PlayerDead == true) return;
+		if (GameController.I.RoundTime == 0 || GameController.I.RoundTime == 10  || GameController.I.PlayerDead == true) return;
 
         spawnTime -= Time.deltaTime;
         if (spawnTime < 0)
@@ -92,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
             while (GameController.I.RoundTime > 0 && GameController.I.PlayerDead == false)
             {
                 EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
+				def.transform.SetParent (EnemyParent);
                 def.speed = Random.Range(3, 5) + (float)level/5;
                 yield return new WaitForSeconds(Mathf.Clamp(0.15f * 1 / level, 0.02f, 1));
             }
@@ -101,8 +102,11 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < amount; i++)
             {
                 enemies[i] = Instantiate(enemy, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
+				enemies [i].transform.SetParent (EnemyParent);
                 yield return new WaitForSeconds(spawnSpeed);
             }
         }
     }
+
+	public int AmountOfEnemies{get{return EnemyParent.childCount; }}
 }

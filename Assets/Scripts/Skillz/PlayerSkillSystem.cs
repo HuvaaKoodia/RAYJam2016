@@ -70,7 +70,7 @@ public class PlayerSkillSystem : MonoBehaviour
 		SkillIDs [index] = id;
 	}
 
-	public void RemoveSkill(int index, SkillID id)
+	public void RemoveSkill(int index)
 	{
 		Skills [index] = null;
 		SkillIDs [index] = SkillID.None;
@@ -79,7 +79,7 @@ public class PlayerSkillSystem : MonoBehaviour
 	public void RefreshSkills()
 	{
 		for (int i = 0; i < 3; i++) {
-			Skills [i].Refresh ();
+			if (Skills [i] != null) Skills [i].Refresh ();
 		}
 
 	}
