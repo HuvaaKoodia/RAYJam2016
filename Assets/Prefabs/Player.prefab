@@ -15,6 +15,7 @@ GameObject:
   - 61: {fileID: 6166054}
   - 114: {fileID: 11445572}
   - 114: {fileID: 11407984}
+  - 114: {fileID: 11462006}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002343961, y: -0.27500507, z: -8.347656}
+  m_LocalPosition: {x: 0.002343961, y: -0.27500507, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401104}
@@ -105,7 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034cc79a416117342afa1d71a208a39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 11407476}
   speed: 12
+  DodgeSpeed: 15
+  DodgeMinDistance: 0.5
+  DodgeEndDistance: 0.1
 --- !u!114 &11407476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66756a04fd0d7014e8cd94c566b2cf3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5099714}
+  Collider: {fileID: 6166054}
   SkillSystem: {fileID: 11469598}
 --- !u!114 &11407984
 MonoBehaviour:
@@ -143,6 +150,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BombPrefab: {fileID: 11407916, guid: ee3f652621109e646861820ce45108b5, type: 2}
   ShootSpeed: 10
+--- !u!114 &11462006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83671e36403e2f944be694c294416821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Skills:
   - {fileID: 11445572}
-  - {fileID: 0}
+  - {fileID: 11462006}
   - {fileID: 11407984}
 --- !u!212 &21271848
 SpriteRenderer:

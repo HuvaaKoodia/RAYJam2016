@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerSkillSystem : MonoBehaviour 
 {
 	public Vector3 MouseDirection {get {return mouseDirection;}}
-	private Vector3 mouseDirection;
+	public Vector3 MousePosition { get {return mousePosition;}}
+	private Vector3 mousePosition, mouseDirection;
 
 	public PlayerSkillBase[] Skills;
 
@@ -19,12 +20,13 @@ public class PlayerSkillSystem : MonoBehaviour
 
 	void Update () 
 	{
-		//calculate mouse direction
-		mouseDirection= (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-		mouseDirection.z = 0;
+		//calculate mouse stats
+		mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		mousePosition.z = 0;
+		mouseDirection= (MousePosition - transform.position).normalized;
 
 		//check skill input
-		if (Skills [0] != null) 
+		if (Skills [0] != null)
 		{
 			if (Input.GetMouseButtonDown (0)) 
 			{

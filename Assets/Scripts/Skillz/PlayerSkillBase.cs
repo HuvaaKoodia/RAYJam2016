@@ -5,10 +5,12 @@ public class PlayerSkillBase : MonoBehaviour
 {
 	//TODO cooldown etc
 	protected PlayerSkillSystem skillSystem;
+	protected PlayerMovement movementSystem;
 
 	void Awake()
 	{
 		skillSystem = GetComponent<PlayerSkillSystem>();
+		movementSystem= GetComponent<PlayerMovement>();
 	}
 
 	public void Activate()
@@ -18,6 +20,5 @@ public class PlayerSkillBase : MonoBehaviour
 
 	protected virtual void OnActivate()
 	{
-
 	}
 }
