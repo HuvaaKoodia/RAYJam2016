@@ -12,6 +12,8 @@ public class PlayerSkillBase : MonoBehaviour
 
 	private bool activationRunning = false;
 
+	public float CooldownPercent { get { return (Time.time - cooldownTimer) / CooldownDelay; }}
+
 	protected int currentActivation = 0;
 
 	void Awake()

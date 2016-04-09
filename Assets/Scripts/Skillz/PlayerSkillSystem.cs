@@ -10,6 +10,10 @@ public class PlayerSkillSystem : MonoBehaviour
 	public PlayerSkillBase[] Skills;
 	public SkillID[] SkillIDs;
 
+	public delegate void SkillEvent (PlayerSkillBase skill);
+
+	public event SkillEvent OnSkillUsed;
+
 	void Awake()
 	{
 		if (Skills == null || Skills.Length != 3) 
