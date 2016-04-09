@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrapSkill : MonoBehaviour
+public class TrapSkill : PlayerSkillBase
 {
 
     public Trap TrapPrefab;
