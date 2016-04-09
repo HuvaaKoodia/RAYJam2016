@@ -97,7 +97,9 @@ public class GUIController : MonoBehaviour
 		{
 			SkillImages [index].sprite = SkillzDatabase.I.GetIcon (skillSystem.SkillIDs [index]);
 			SkillGroups [index].alpha = 1;
+			SkillAmounts [index].text = "";
 			StartCoroutine (FadeSkillIconCoroutine (index));
+			return;
 		}
 		else 
 		{
