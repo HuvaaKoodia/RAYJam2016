@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebee69477868d4a439484f0626c87bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownDelay: 3
+  CooldownDelay: 2
   UsesPerRound: -1
   ShotsPerActivation: 5
   DelayBetweenActivations: 0

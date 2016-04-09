@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
+	public static EnemySpawner I;
+
     public static int level;
 
     public int enemyAmount;
@@ -15,14 +17,14 @@ public class EnemySpawner : MonoBehaviour
     public EnemyMovement enemy4; // homing 
     EnemyMovement[] enemies;
 
-    // Use this for initialization
-    void Start()
-    {
-        level = 1;
-        field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
-        enemies = new EnemyMovement[enemyAmount];
-        StartCoroutine(Spawn(enemy, 1, Mathf.Clamp(0.15f*1/level,0.02f,1), field.x, field.y));
-    }
+	void Awake()
+	{
+		I = this;
+
+		level = 1;
+		field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
+		enemies = new EnemyMovement[enemyAmount];
+	}
 
     // Update is called once per frame     
     void Update()
@@ -74,6 +76,11 @@ public class EnemySpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5)) level = 5;
         if (Input.GetKeyDown(KeyCode.Alpha0)) level = 10;
     }
+
+	public void StartWave()
+	{
+		StartCoroutine(Spawn(enemy, 1, Mathf.Clamp(0.15f*1/level,0.02f,1), field.x, field.y));
+	}
 
     IEnumerator Spawn(EnemyMovement enemy, int amount, float spawnSpeed, float spawnMin, float spawnMax)
     {

@@ -8,6 +8,7 @@ public class PlayerSkillSystem : MonoBehaviour
 	private Vector3 mousePosition, mouseDirection;
 
 	public PlayerSkillBase[] Skills;
+	public SkillID[] SkillIDs;
 
 	void Awake()
 	{
@@ -15,6 +16,7 @@ public class PlayerSkillSystem : MonoBehaviour
 		{
 			Skills = new PlayerSkillBase[3];
 		}
+		SkillIDs = new SkillID[3];
 	}
 
 	void Update () 
@@ -53,10 +55,20 @@ public class PlayerSkillSystem : MonoBehaviour
 	public void ReplaceSkill(int index, SkillID id)
 	{
 		Skills[index] = gameObject.GetComponent (SkillzDatabase.I.GetSkill (id)) as PlayerSkillBase;
+		SkillIDs [index] = id;
 	}
 
 	public void RemoveSkill(int index, SkillID id)
 	{
 		Skills [index] = null;
+		SkillIDs [index] = SkillID.None;
+	}
+
+	public void RefreshSkills()
+	{
+		for (int i = 0; i < 3; i++) {
+			Skills [i].Refresh ();
+		}
+
 	}
 } 

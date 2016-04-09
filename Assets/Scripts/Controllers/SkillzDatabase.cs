@@ -6,16 +6,17 @@ public enum SkillID
 {
 	Bomb,
 	Shield,
-	Seekers,
+	//Seekers,
 	Dodge,
-	Slowdown,
+	//Slowdown,
 	Rapidfire,
 	Shotgun,
-	Trap,
+	//Trap,
 	Lazor,
-	Pet,
-	Melee,
+	//Pet,
+	//Melee,
 	_Amount,
+	None,
 	DestroySkill,
 }
 
@@ -38,15 +39,17 @@ public class SkillzDatabase : MonoBehaviour
 
 		AddSkill(SkillID.Bomb, typeof(BombSkill), "BombIcon");
 		AddSkill(SkillID.Shield, typeof(ShieldSkill), "ShieldIcon");
-		AddSkill(SkillID.Seekers, typeof(BombSkill), "SeekersIcon");
 		AddSkill(SkillID.Dodge, typeof(DodgeSkill), "DodgeIcon");
-		AddSkill(SkillID.Slowdown, typeof(BombSkill), "SlowdownIcon");
 		AddSkill(SkillID.Rapidfire, typeof(RapidFireSkill), "RapidfireIcon");
 		AddSkill(SkillID.Shotgun, typeof(ShotgunSkill), "ShotgunIcon");
-		AddSkill(SkillID.Trap, typeof(BombSkill), "TrapIcon");
 		AddSkill(SkillID.Lazor, typeof(LazorSkill), "LazorIcon");
+		/*
+		AddSkill(SkillID.Seekers, typeof(BombSkill), "SeekersIcon");
+		AddSkill(SkillID.Slowdown, typeof(BombSkill), "SlowdownIcon");
+		AddSkill(SkillID.Trap, typeof(BombSkill), "TrapIcon");
 		AddSkill(SkillID.Pet, typeof(BombSkill), "PetIcon");
 		AddSkill(SkillID.Melee, typeof(BombSkill), "MeleeIcon");
+		*/
 	}
 
 	private void AddSkill(SkillID id, Type type, string icon)
