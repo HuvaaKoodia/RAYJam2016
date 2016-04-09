@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034cc79a416117342afa1d71a208a39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathParticles: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
   Player: {fileID: 11407476}
   speed: 12
   DodgeSpeed: 15
@@ -188,6 +189,8 @@ MonoBehaviour:
   UsesPerRound: -1
   ShotsPerActivation: 1
   DelayBetweenActivations: 0.1
+  shakeDuration: 0.7
+  shakeIntensity: 25
   LazorPrefab: {fileID: 11424402, guid: efd667fc75d11f943a70aa4cd86e0b41, type: 2}
 --- !u!114 &11421608
 MonoBehaviour:
@@ -204,6 +207,8 @@ MonoBehaviour:
   UsesPerRound: -1
   ShotsPerActivation: 8
   DelayBetweenActivations: 0
+  shakeDuration: 1
+  shakeIntensity: 3.5
   BulletPrefab: {fileID: 11443054, guid: e84f0ba4af41c3643bc6ee911d690e08, type: 2}
   BulletSpeed: 55
   BulletSpreadAngle: 80
@@ -222,6 +227,8 @@ MonoBehaviour:
   UsesPerRound: -1
   ShotsPerActivation: 6
   DelayBetweenActivations: 0.06
+  shakeDuration: 0.5
+  shakeIntensity: 2
   BulletPrefab: {fileID: 11478808, guid: 1984679e164f4a14b986ae7eabb96abb, type: 2}
   BulletSpeed: 18
   BulletSpreadAngle: 18
