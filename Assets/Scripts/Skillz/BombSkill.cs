@@ -13,6 +13,7 @@ public class BombSkill: PlayerSkillBase
 	{
 		var bomb = Instantiate (BombPrefab, transform.position + skillSystem.MouseDirection * 2f, Quaternion.identity) as Bomb;
 		bomb.Rigidbody.AddForce (skillSystem.MouseDirection * BulletSpeed, ForceMode2D.Impulse);
+        bomb.Rigidbody.AddTorque(Random.Range(-1f,1f),ForceMode2D.Impulse);
 	}
 
 }

@@ -9,16 +9,32 @@ public class PlayerMovement : MonoBehaviour
     float inputX;
     float inputY;
 
+    float oldPos;
+    float newPos;
+
 	public PlayerView Player;
 	public bool Dodging{ get; private set;}
 	public float speed, DodgeSpeed = 15f;
 	public float DodgeMinDistance = 0.5f, DodgeEndDistance = 0.1f;
+
+    private string currentAnimation = "Nothing";
+    private int frame = 0;
+    private int animationFrames = 15;
+
+    private Sprite[] sprites = new Sprite[4];
+    public SpriteRenderer renderer;
+
+    Animator animator = new Animator();
 
     // Use this for initialization
     void Start()
     {
 		Dodging = false;
         rb = GetComponent<Rigidbody2D>();
+
+        sprites = Resources.LoadAll<Sprite>("Player/Cat_SpriteSheet");
+
+        oldPos = transform.position.x;
     }
 
     // Update is called once per frame
@@ -27,19 +43,69 @@ public class PlayerMovement : MonoBehaviour
 		if (Dodging)
 			return;
 
+        //if (frame == animationFrames) frame = 0;
+        //frame++;
+
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
+
+        newPos = transform.position.x;
+
+        if ((newPos < oldPos) && (currentAnimation == "rightOne" || currentAnimation == "rightTwo"))
+        {
+            renderer.sprite = sprites[0];
+        }
+        else if ((newPos > oldPos) && (currentAnimation == "leftOne" || currentAnimation == "leftTwo"))
+        {
+            renderer.sprite = sprites[2];
+        }
+
+        if (frame == animationFrames)
+        {
+            if (newPos < oldPos)
+            {
+                if (currentAnimation == "leftOne")
+                {
+                    currentAnimation = "leftTwo";
+                    renderer.sprite = sprites[1];
+                }
+                else
+                {
+                    currentAnimation = "leftOne";
+                    renderer.sprite = sprites[0];
+                }
+            }
+            else if (newPos > oldPos)
+            {
+                if (currentAnimation == "rightOne")
+                {
+                    currentAnimation = "rightTwo";
+                    renderer.sprite = sprites[3];
+                }
+                else
+                {
+                    currentAnimation = "rightOne";
+                    renderer.sprite = sprites[2];
+                }
+            }
+            
+            frame = 0;
+        }
+
         if (inputX != 0 || inputY != 0)
         {
             rb.velocity = Vector2.zero;
+
             // Prevent movement outside the screen
             if (rb.position.x < EnemySpawner.field.x && inputX < 0) inputX = 0;
             if (rb.position.x > EnemySpawner.field.y && inputX > 0) inputX = 0;
             if (rb.position.y < Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY < 0) inputY = 0;
             if (rb.position.y > -Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY > 0) inputY = 0;
-            rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
+            rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime, transform.position.y + inputY * speed * Time.deltaTime));
 
         }
+     
+        frame++;
     }
 
 	public void Dodge(Vector3 worldPosition)
