@@ -5,11 +5,11 @@ public class Bomb : MonoBehaviour
 {
 	public GameObject ExplosionPrefab;
 	public Rigidbody2D Rigidbody;
-	public float LifeTime = 1f, ExplosionRadius = 5f;
+	public float Lifetime = 1f, ExplosionRadius = 5f;
 
 	IEnumerator Start () 
 	{
-		yield return new WaitForSeconds(LifeTime);
+		yield return new WaitForSeconds(Lifetime);
 
 		Destroy (gameObject);
 	}

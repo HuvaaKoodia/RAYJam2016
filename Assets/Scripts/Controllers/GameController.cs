@@ -7,12 +7,9 @@ public class GameController : MonoBehaviour
 	public static GameController I;
 
 	public PlayerView Player;
-
 	public float RoundTime{get;private set;}
 
 	private int state = 0;
-
-	public Image Temp;
 
 	void Awake() 
 	{
@@ -21,8 +18,6 @@ public class GameController : MonoBehaviour
 
 	void Start()
 	{
-		Temp.sprite = SkillzDatabase.I.GetIcon (SkillID.Bomb);
-
 		StartCoroutine (StateCoroutine ());
 	}
 	

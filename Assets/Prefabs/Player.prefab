@@ -14,6 +14,7 @@ GameObject:
   - 50: {fileID: 5099714}
   - 61: {fileID: 6166054}
   - 114: {fileID: 11445572}
+  - 114: {fileID: 11407984}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -117,6 +118,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillSystem: {fileID: 11469598}
+--- !u!114 &11407984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698f7d3b219eace4ea28661ec34f2bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LazorPrefab: {fileID: 11424402, guid: efd667fc75d11f943a70aa4cd86e0b41, type: 2}
 --- !u!114 &11445572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7786bf593323c49a30d9d68b8d6ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Skills: []
+  Skills:
+  - {fileID: 11445572}
+  - {fileID: 0}
+  - {fileID: 11407984}
 --- !u!212 &21271848
 SpriteRenderer:
   m_ObjectHideFlags: 1

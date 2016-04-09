@@ -11,8 +11,13 @@ public class PlayerSkillBase : MonoBehaviour
 		skillSystem = GetComponent<PlayerSkillSystem>();
 	}
 
-	public virtual void Activate()
+	public void Activate()
 	{
-		
+		OnActivate ();
+	}
+
+	protected virtual void OnActivate()
+	{
+
 	}
 }
