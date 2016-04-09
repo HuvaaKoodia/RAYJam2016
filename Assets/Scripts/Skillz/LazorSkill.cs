@@ -3,15 +3,21 @@ using System.Collections;
 
 public class LazorSkill : PlayerSkillBase
 {
-	public Lazor LazorPrefab;
+    public float shakeDuration;
+    public float shakeIntensity;
 
-	protected override void OnActivate ()
-	{
-		//angle hack
-		float angle = Vector3.Angle(Vector3.up, skillSystem.MouseDirection);
-		if (skillSystem.MouseDirection.x > 0)
-			angle = -angle;
+    public Lazor LazorPrefab;
 
-		Instantiate (LazorPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
-	}
+    protected override void OnActivate()
+    {
+        //angle hack
+        float angle = Vector3.Angle(Vector3.up, skillSystem.MouseDirection);
+        if (skillSystem.MouseDirection.x > 0)
+            angle = -angle;
+
+        //SHAKE
+        CameraControl.I.StartShake(shakeDuration, shakeIntensity);
+
+        Instantiate(LazorPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+    }
 }

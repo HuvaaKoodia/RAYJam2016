@@ -89,7 +89,6 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemy.enemyType == 1) // Red blocks
         {
-            print("RoundTime " + GameController.I.RoundTime);
             while (GameController.I.RoundTime > 0 && GameController.I.PlayerDead == false)
             {
                 EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;

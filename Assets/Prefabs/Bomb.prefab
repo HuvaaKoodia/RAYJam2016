@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b2e595171c3404ea3eac9c1799e69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeDuration: 3
+  shakeIntensity: 1.2
   ExplosionPrefab: {fileID: 110392, guid: af5cca92e6d84d0428baf52ff05fc63a, type: 2}
   Rigidbody: {fileID: 5057624}
   Lifetime: 0.85

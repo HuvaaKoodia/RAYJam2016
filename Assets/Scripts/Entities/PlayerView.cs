@@ -23,6 +23,7 @@ public class PlayerView : MonoBehaviour
 			OnDeathEvent ();
 
 		Instantiate (DeathParticles, transform.position, Quaternion.identity);
+        CameraControl.I.StartShake(5.0f, 1.0f);
 		Destroy(gameObject);
 	}
 

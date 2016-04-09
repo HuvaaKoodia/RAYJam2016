@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
             Instantiate(DeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        
+
         switch (enemyType)
         {
             case 1: // Basic enemy moving down
@@ -52,11 +52,11 @@ public class EnemyMovement : MonoBehaviour
                     speed = 4;
                     if (zig >= 1)
                     {
-                        rb.MovePosition(new Vector2(transform.position.x + (zig-1) * 20 * Time.deltaTime, transform.position.y - speed * Time.deltaTime));
+                        rb.MovePosition(new Vector2(transform.position.x + (zig - 1) * 20 * Time.deltaTime, transform.position.y - speed * Time.deltaTime));
                     }
                     else
                     {
-                       rb.MovePosition(new Vector2(transform.position.x - zig * 20 * Time.deltaTime, transform.position.y - speed * Time.deltaTime));
+                        rb.MovePosition(new Vector2(transform.position.x - zig * 20 * Time.deltaTime, transform.position.y - speed * Time.deltaTime));
                     }
                     if (sprint < 0) sprint = 20; else sprint -= 10 * Time.deltaTime;
                     if (zig <= 0) zig = 2; else zig -= Time.deltaTime;
@@ -68,7 +68,10 @@ public class EnemyMovement : MonoBehaviour
                     if (player == null)
                     {
                         if (GameObject.Find("Player") != null)
+                        {
                             player = GameObject.Find("Player").GetComponent<PlayerView>();
+                            targetPos = player.transform.position;
+                        }
                     }
                     if (Vector2.Distance((Vector2)transform.position, targetPos) < 1 || sprint < 0)
                     {
@@ -76,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
                         sprint = 20;
                     }
                     else sprint -= 10 * Time.deltaTime;
-                    rb.MovePosition(Vector2.MoveTowards(rb.position, targetPos, speed + (float)EnemySpawner.level/20 * sprint*2 * Time.deltaTime));
+                    rb.MovePosition(Vector2.MoveTowards(rb.position, targetPos, speed + (float)EnemySpawner.level / 20 * sprint * 2 * Time.deltaTime));
 
                     break;
                 }
@@ -84,12 +87,12 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-	//kill player
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.collider.gameObject.tag == "Player") 
-		{
-			collision.gameObject.GetComponent<PlayerView> ().Die();
-		}
-	}
+    //kill player
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerView>().Die();
+        }
+    }
 }
