@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 	public PlayerView Player;
 	public float RoundTime{get;private set;}
 
-	private int state = 0;
+	private int state = 1;
 
 	void Awake() 
 	{

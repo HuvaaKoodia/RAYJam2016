@@ -5,29 +5,87 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public int enemyAmount;
-    public GameObject enemy;
-    GameObject[] enemies;
+    public int level;
+    float spawnTime;
+    Vector2 field;
+
+    public EnemyMovement enemy; // Goes down
+    public EnemyMovement enemy2; // Goes down with sprints
+    public EnemyMovement enemy3; // zigzag
+    public EnemyMovement enemy4; // homing 
+    EnemyMovement[] enemies;
 
     // Use this for initialization
     void Start()
     {
-        enemies = new GameObject[enemyAmount];
-        CreateEnemies(enemyAmount);
+        field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
+        print(field);
+        enemies = new EnemyMovement[enemyAmount];
+        StartCoroutine(Spawn(enemy, 1, Mathf.Clamp(0.15f*1/level,0.02f,1), field.x, field.y));
     }
 
-    // Update is called once per frame
+    // Update is called once per frame     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) CreateEnemies(10);
+        if (GameController.I.RoundTime == 0) return;
+        spawnTime -= Time.deltaTime;
+        if (spawnTime < 0)
+        {
+            int spawnType = Random.Range(2, 3);
+            float min = Random.Range(field.x, field.y);
+            float max = min + 3; //+ Random.Range(0, 3);
+
+            switch (spawnType)
+            {
+                case 1:
+                    {
+                        StartCoroutine(Spawn(enemy, Random.Range(5, 6), 0.2f, field.x, field.y));
+                        break;
+                    }
+                case 2:
+                    {
+                        StartCoroutine(Spawn(enemy2, Random.Range(5, 6), 0.2f, min, min));
+                        break;
+                    }
+                case 3:
+                    {
+                        StartCoroutine(Spawn(enemy3, Random.Range(5, 6), 0.1f, min, min));
+                        min = Random.Range(field.x, field.y);
+                        StartCoroutine(Spawn(enemy3, Random.Range(5, 6), 0.2f, min, min));
+                        break;
+                    }
+                case 4:
+                    {
+                        StartCoroutine(Spawn(enemy4, Random.Range(3, 4), 1f, min, max));
+                        break;
+                    }
+                default: break;
+            }
+
+            spawnTime = Mathf.Clamp(2-(float)level/5,1,2);
+            print(spawnTime);
+        }
+        if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(Spawn(enemy, enemyAmount, 0.1f, -4, 2));
     }
 
-    void CreateEnemies(int amount)
+    IEnumerator Spawn(EnemyMovement enemy, int amount, float spawnSpeed, float spawnMin, float spawnMax)
     {
-        for (int i = 0; i < amount; i++)
+        if (enemy.enemyType == 1)
         {
-            print("enemy" + i);
-            enemies[i] = Instantiate(enemy, new Vector2(Random.Range(-20,20), 15+Random.Range(1,3)), Quaternion.identity) as GameObject;
-            enemies[i].GetComponent<EnemyMovement>().enemyType = Random.Range(1, 3);
+            while (GameController.I.RoundTime > 0)
+            {
+                EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
+                def.speed = Random.Range(3, 5) + (float)level/10;
+                yield return new WaitForSeconds(spawnSpeed);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                enemies[i] = Instantiate(enemy, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
+                yield return new WaitForSeconds(spawnSpeed);
+            }
         }
     }
 }
