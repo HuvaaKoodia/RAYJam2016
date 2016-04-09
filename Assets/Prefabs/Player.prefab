@@ -19,6 +19,7 @@ GameObject:
   - 114: {fileID: 11427516}
   - 114: {fileID: 11421608}
   - 114: {fileID: 11456772}
+  - 114: {fileID: 11461314}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -267,6 +268,22 @@ MonoBehaviour:
   DelayBetweenActivations: 0.5
   ShieldObject: {fileID: 161734}
   ShieldDuration: 3
+--- !u!114 &11461314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00222c0537c4c9846914f9f54b1320cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: -1
+  UsesPerRound: 1
+  ShotsPerActivation: 1
+  DelayBetweenActivations: 0.5
+  TrapPrefab: {fileID: 11428270, guid: 7d8dcb6d45932ef4db8270b11a4e43f8, type: 2}
 --- !u!114 &11462006
 MonoBehaviour:
   m_ObjectHideFlags: 1

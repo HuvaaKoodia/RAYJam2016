@@ -107,6 +107,8 @@ public class GUIController : MonoBehaviour
 			SkillGroups [index].alpha = 1;
 		}
 	
+		if (skillSystem.Skills[index] == null) return;
+
 		if (showText && skillSystem.Skills[index].UsesLeft != -1)
 			SkillAmounts [index].text = "" + skillSystem.Skills[index].UsesLeft;
 		else

@@ -184,6 +184,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 787545239}
   m_Script: {fileID: 11500000, guid: 66756a04fd0d7014e8cd94c566b2cf3a, type: 3}
+--- !u!1 &731621556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 731621557}
+  m_Layer: 0
+  m_Name: EnemyParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731621557
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 731621556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0023439527, y: -0.2750051, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1001 &787545239
 Prefab:
   m_ObjectHideFlags: 0
@@ -191,10 +218,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 445432, guid: 3dce569c006cb8841b0916904999f629, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.002343961
@@ -226,26 +249,6 @@ Prefab:
     - target: {fileID: 445432, guid: 3dce569c006cb8841b0916904999f629, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1651507985}
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Refresh
-      objectReference: {fileID: 0}
-    - target: {fileID: 11407476, guid: 3dce569c006cb8841b0916904999f629, type: 2}
-      propertyPath: event1.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dce569c006cb8841b0916904999f629, type: 2}
@@ -342,12 +345,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efd667fc75d11f943a70aa4cd86e0b41, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1651507985 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11456772, guid: 3dce569c006cb8841b0916904999f629,
-    type: 2}
-  m_PrefabInternal: {fileID: 787545239}
-  m_Script: {fileID: 11500000, guid: 6a5a0a51f96a5d04cbcd4960239cb33e, type: 3}
 --- !u!1 &1705198586
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 100
-  player: {fileID: 0}
+  EnemyParent: {fileID: 731621557}
   enemy: {fileID: 11416422, guid: 0892f34763fb28041a73728293c6b8e6, type: 2}
   enemy2: {fileID: 11460600, guid: e385a37500d8a9f4eb696881f97e9cc5, type: 2}
   enemy3: {fileID: 11475588, guid: 40709fa74bf0161439b4a1c6cf719528, type: 2}
