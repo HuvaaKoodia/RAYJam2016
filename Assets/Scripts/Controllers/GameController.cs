@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -22,7 +23,13 @@ public class GameController : MonoBehaviour
 	{
 		StartCoroutine (StateCoroutine ());
 	}
-	
+
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.R))
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+	}
+
 	IEnumerator StateCoroutine()
 	{
 		while (true) 
