@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 100
+  player: {fileID: 0}
   enemy: {fileID: 11416422, guid: 0892f34763fb28041a73728293c6b8e6, type: 2}
   enemy2: {fileID: 11460600, guid: e385a37500d8a9f4eb696881f97e9cc5, type: 2}
   enemy3: {fileID: 11475588, guid: 40709fa74bf0161439b4a1c6cf719528, type: 2}
@@ -429,6 +430,7 @@ GameObject:
   - 92: {fileID: 1808360290}
   - 124: {fileID: 1808360289}
   - 81: {fileID: 1808360288}
+  - 114: {fileID: 1808360293}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -503,6 +505,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1808360293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808360287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03529726b4f14f84eaeabd8bfcf51797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1902144883
 GameObject:
   m_ObjectHideFlags: 0
