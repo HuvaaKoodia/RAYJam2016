@@ -58,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             case 4: // sprint to player position
                 {
-                    //if (player.Dead == true) return;
+                    if (player.Dead == true) return;
                     if (player == null)
                     {
                         if (GameObject.Find("Player") != null)

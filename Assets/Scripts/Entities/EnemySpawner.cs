@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame     
     void Update()
     {
-        //if (GameController.I.RoundTime == 0 || player.Dead == true) return;
+        if (GameController.I.RoundTime == 0 || player.Dead == true) return;
         spawnTime -= Time.deltaTime;
         if (spawnTime < 0)
         {
