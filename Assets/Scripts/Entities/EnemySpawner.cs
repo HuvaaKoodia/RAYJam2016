@@ -31,7 +31,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame     
     void Update()
     {
-        if (GameController.I.RoundTime == 0 || player.Dead == true) return;
+        if (GameController.I.RoundTime == 0 || GameController.I.PlayerDead == true) return;
+
         spawnTime -= Time.deltaTime;
         if (spawnTime < 0)
         {
@@ -70,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // TEST COMMANDS
-        if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(Spawn(enemy, enemyAmount, 0.1f, -4, 2));
+        if (Input.GetKeyDown(KeyCode.E)) StartWave();
         if (Input.GetKeyDown(KeyCode.Alpha1)) level = 1;
         if (Input.GetKeyDown(KeyCode.Alpha2)) level = 2;
         if (Input.GetKeyDown(KeyCode.Alpha3)) level = 3;
@@ -89,7 +90,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemy.enemyType == 1) // Red blocks
         {
             print("RoundTime " + GameController.I.RoundTime);
-            while (GameController.I.RoundTime > 0)
+            while (GameController.I.RoundTime > 0 && GameController.I.PlayerDead == false)
             {
                 EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
                 def.speed = Random.Range(3, 5) + (float)level/5;

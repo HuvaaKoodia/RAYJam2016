@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-
+    public GameObject DeathParticles;
     Rigidbody2D rb;
     PlayerView player;
     Transform swing;
@@ -28,6 +28,12 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         if (rb.position.y < Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y - 2) Destroy(gameObject);
+        if (GameController.I.PlayerDead == true)
+        {
+            Instantiate(DeathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        
         switch (enemyType)
         {
             case 1: // Basic enemy moving down
@@ -58,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
                 }
             case 4: // sprint to player position
                 {
-                    if (player.Dead == true) return;
+                    if (GameController.I.PlayerDead == true) return;
                     if (player == null)
                     {
                         if (GameObject.Find("Player") != null)

@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e865307f5edaa5c48957a431f72e2477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathParticles: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
   sprint: 0
   enemyType: 2
   speed: 0.6
