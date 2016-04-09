@@ -42,14 +42,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "enemy")
-            Instantiate(DeathParticles, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-
-    }
-
 	public void Dodge(Vector3 worldPosition)
 	{
 		if (Dodging)
