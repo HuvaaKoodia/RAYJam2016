@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
     float spawnTime;
     public static Vector2 field;
 
+    public PlayerView player;
+
     public EnemyMovement enemy; // Goes down
     public EnemyMovement enemy2; // Goes down with sprints
     public EnemyMovement enemy3; // zigzag
@@ -29,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame     
     void Update()
     {
-        if (GameController.I.RoundTime == 0) return;
+        if (GameController.I.RoundTime == 0 || player.Dead == true) return;
         spawnTime -= Time.deltaTime;
         if (spawnTime < 0)
         {

@@ -5,7 +5,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    GameObject player;
+    PlayerView player;
     Transform swing;
     Vector2 targetPos;
     public float sprint;
@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         swing = transform.GetChild(1).transform;
-        player = GameObject.Find("Player");
+
         sprint = 20;
         zig = 2;
     }
@@ -58,13 +58,20 @@ public class EnemyMovement : MonoBehaviour
                 }
             case 4: // sprint to player position
                 {
-                    if (sprint < 0)
+                    if (player.Dead == true) return;
+                    if (player == null)
                     {
-                        sprint = 20;
+                        if (GameObject.Find("Player") != null)
+                            player = GameObject.Find("Player").GetComponent<PlayerView>();
+                    }
+                    if (Vector2.Distance((Vector2)transform.position, targetPos) < 1 || sprint < 0)
+                    {
                         targetPos = player.transform.position;
+                        sprint = 20;
                     }
                     else sprint -= 10 * Time.deltaTime;
                     rb.MovePosition(Vector2.MoveTowards(rb.position, targetPos, speed + (float)EnemySpawner.level/20 * sprint*2 * Time.deltaTime));
+
                     break;
                 }
             default: break;
