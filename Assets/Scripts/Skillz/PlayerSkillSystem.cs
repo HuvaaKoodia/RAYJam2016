@@ -15,7 +15,6 @@ public class PlayerSkillSystem : MonoBehaviour
 		{
 			Skills = new PlayerSkillBase[3];
 		}
-
 	}
 
 	void Update () 
@@ -23,26 +22,28 @@ public class PlayerSkillSystem : MonoBehaviour
 		//calculate mouse stats
 		mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePosition.z = 0;
-		mouseDirection= (MousePosition - transform.position).normalized;
+		mouseDirection = (MousePosition - transform.position).normalized;
 
 		//check skill input
 		if (Skills [0] != null)
 		{
-			if (Input.GetMouseButtonDown (0)) 
+			if (Input.GetMouseButton (0)) 
 			{
 				Skills [0].Activate ();
 			}
 		}
+
 		if (Skills [1] != null) 
 		{
-			if (Input.GetMouseButtonDown (2)) 
+			if (Input.GetMouseButton (2)) 
 			{
 				Skills [1].Activate ();
 			}
 		}
+
 		if (Skills [2] != null) 
 		{
-			if (Input.GetMouseButtonDown (1)) 
+			if (Input.GetMouseButton (1)) 
 			{
 				Skills [2].Activate ();
 			}

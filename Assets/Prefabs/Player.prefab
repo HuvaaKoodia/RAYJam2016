@@ -136,6 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698f7d3b219eace4ea28661ec34f2bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CooldownDelay: 3
+  UsesPerRound: -1
+  ShotsPerActivation: 1
+  DelayBetweenActivations: 0.1
   LazorPrefab: {fileID: 11424402, guid: efd667fc75d11f943a70aa4cd86e0b41, type: 2}
 --- !u!114 &11445572
 MonoBehaviour:
@@ -148,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a16058f66ef7324b8218987d5a1880e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CooldownDelay: 1
+  UsesPerRound: 3
+  ShotsPerActivation: 4
+  DelayBetweenActivations: 0.1
   BombPrefab: {fileID: 11407916, guid: ee3f652621109e646861820ce45108b5, type: 2}
   ShootSpeed: 10
 --- !u!114 &11462006
@@ -161,6 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83671e36403e2f944be694c294416821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CooldownDelay: 2
+  UsesPerRound: -1
+  ShotsPerActivation: 1
+  DelayBetweenActivations: 0.5
 --- !u!114 &11469598
 MonoBehaviour:
   m_ObjectHideFlags: 1
