@@ -67,4 +67,9 @@ public class SkillzDatabase : MonoBehaviour
 	{
 		return (SkillID)UnityEngine.Random.Range(0, (int)SkillID._Amount);
 	}
+
+    public int GetAmountOfSkill()
+    {
+        return icons.Length;
+    }
 }
