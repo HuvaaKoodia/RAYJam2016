@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int enemyAmount;
     float spawnTime;
-    Vector2 field;
+    public static Vector2 field;
 
     public EnemyMovement enemy; // Goes down
     public EnemyMovement enemy2; // Goes down with sprints

@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public GameObject DeathParticles;
     Rigidbody2D rb;
     float inputX;
     float inputY;
@@ -31,9 +32,22 @@ public class PlayerMovement : MonoBehaviour
         if (inputX != 0 || inputY != 0)
         {
             rb.velocity = Vector2.zero;
-            //rb.transform.position += new Vector3(inputX * speed * Time.deltaTime, inputY * speed * Time.deltaTime);
+            // Prevent movement outside the screen
+            if (rb.position.x < EnemySpawner.field.x && inputX < 0) inputX = 0;
+            if (rb.position.x > EnemySpawner.field.y && inputX > 0) inputX = 0;
+            if (rb.position.y < Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY < 0) inputY = 0;
+            if (rb.position.y > -Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY > 0) inputY = 0;
             rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
+
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "enemy")
+            Instantiate(DeathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
     }
 
 	public void Dodge(Vector3 worldPosition)

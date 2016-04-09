@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 55
-  level: 1
   enemy: {fileID: 11416422, guid: 0892f34763fb28041a73728293c6b8e6, type: 2}
   enemy2: {fileID: 11460600, guid: e385a37500d8a9f4eb696881f97e9cc5, type: 2}
   enemy3: {fileID: 11475588, guid: 40709fa74bf0161439b4a1c6cf719528, type: 2}
@@ -272,8 +271,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445432, guid: 3dce569c006cb8841b0916904999f629, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11403628, guid: 3dce569c006cb8841b0916904999f629, type: 2}
+      propertyPath: DeathParticles
+      value: 
+      objectReference: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3dce569c006cb8841b0916904999f629, type: 2}
   m_IsPrefabParent: 0
