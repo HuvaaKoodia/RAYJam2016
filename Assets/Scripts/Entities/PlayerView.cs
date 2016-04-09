@@ -8,6 +8,7 @@ public class PlayerView : MonoBehaviour
 	public Rigidbody2D Rigidbody;
 	public Collider2D Collider;
 
+	public GameObject DeathParticles;
 	public PlayerSkillSystem SkillSystem;
 
 	public void Start()
@@ -18,8 +19,11 @@ public class PlayerView : MonoBehaviour
 	public void Die()
 	{
 		Dead = true;
+
+		Instantiate (DeathParticles, transform.position, Quaternion.identity);
+		Destroy(gameObject);
 	}
-		
+
 	public void SetKinematic(bool kinematic)
 	{
 		Rigidbody.isKinematic = kinematic;

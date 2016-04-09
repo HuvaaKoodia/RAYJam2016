@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523b73cd23d335c4b9d890470f3de6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lifetime: 1.9
+  Lifetime: 1.2
   SizeOverLifetimeCurve:
     serializedVersion: 2
     m_Curve:

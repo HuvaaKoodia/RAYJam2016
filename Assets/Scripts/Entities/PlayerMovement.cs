@@ -3,8 +3,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public GameObject DeathParticles;
     Rigidbody2D rb;
     float inputX;
     float inputY;
@@ -40,14 +38,6 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
 
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "enemy")
-            Instantiate(DeathParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-
     }
 
 	public void Dodge(Vector3 worldPosition)

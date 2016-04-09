@@ -21,7 +21,7 @@ GameObject:
   - 114: {fileID: 11456772}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 107576}
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 20
   m_AngularDrag: 1
   m_GravityScale: 0
   m_IsKinematic: 0
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034cc79a416117342afa1d71a208a39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathParticles: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
   Player: {fileID: 11407476}
   speed: 12
   DodgeSpeed: 15
@@ -172,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 5099714}
   Collider: {fileID: 6166054}
+  DeathParticles: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
   SkillSystem: {fileID: 11469598}
 --- !u!114 &11407984
 MonoBehaviour:
@@ -200,13 +200,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebee69477868d4a439484f0626c87bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownDelay: 2
+  CooldownDelay: 1.8
   UsesPerRound: -1
-  ShotsPerActivation: 5
+  ShotsPerActivation: 8
   DelayBetweenActivations: 0
   BulletPrefab: {fileID: 11443054, guid: e84f0ba4af41c3643bc6ee911d690e08, type: 2}
-  BulletSpeed: 35
-  BulletSpreadAngle: 90
+  BulletSpeed: 55
+  BulletSpreadAngle: 80
 --- !u!114 &11427516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,13 +218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8bf7e1e9c38ca4c87d8831f5ca1501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownDelay: 1.5
+  CooldownDelay: 1.4
   UsesPerRound: -1
-  ShotsPerActivation: 3
-  DelayBetweenActivations: 0.12
+  ShotsPerActivation: 6
+  DelayBetweenActivations: 0.06
   BulletPrefab: {fileID: 11478808, guid: 1984679e164f4a14b986ae7eabb96abb, type: 2}
-  BulletSpeed: 16
-  BulletSpreadAngle: 10
+  BulletSpeed: 18
+  BulletSpreadAngle: 18
 --- !u!114 &11445572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +258,7 @@ MonoBehaviour:
   ShotsPerActivation: 1
   DelayBetweenActivations: 0.5
   ShieldObject: {fileID: 161734}
-  ShieldDuration: 2.5
+  ShieldDuration: 3
 --- !u!114 &11462006
 MonoBehaviour:
   m_ObjectHideFlags: 1
