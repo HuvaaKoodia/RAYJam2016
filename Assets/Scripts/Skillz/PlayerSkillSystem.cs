@@ -10,7 +10,7 @@ public class PlayerSkillSystem : MonoBehaviour
 	public PlayerSkillBase[] Skills;
 	public SkillID[] SkillIDs;
 
-	public delegate void SkillEvent (PlayerSkillBase skill);
+	public delegate void SkillEvent (int index, PlayerSkillBase skill);
 
 	public event SkillEvent OnSkillUsed;
 
@@ -36,6 +36,8 @@ public class PlayerSkillSystem : MonoBehaviour
 			if (Input.GetMouseButton (0)) 
 			{
 				Skills [0].Activate ();
+				if (OnSkillUsed != null)
+					OnSkillUsed (0, Skills [0]);
 			}
 		}
 
@@ -44,6 +46,9 @@ public class PlayerSkillSystem : MonoBehaviour
 			if (Input.GetMouseButton (2)) 
 			{
 				Skills [1].Activate ();
+
+				if (OnSkillUsed != null)
+					OnSkillUsed (1, Skills [1]);
 			}
 		}
 
@@ -52,6 +57,9 @@ public class PlayerSkillSystem : MonoBehaviour
 			if (Input.GetMouseButton (1)) 
 			{
 				Skills [2].Activate ();
+
+				if (OnSkillUsed != null)
+					OnSkillUsed (2, Skills [2]);
 			}
 		}
 	}

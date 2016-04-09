@@ -6,7 +6,9 @@ public class GUIController : MonoBehaviour
 {
 	public static GUIController I;
 
-	public Image Skill1, Skill2, Skill3;
+	public Image[] SkillImages;
+	public CanvasGroup[] SkillGroups;
+	public Text[] SkillAmounts;
 
 	void Awake() 
 	{
@@ -15,31 +17,51 @@ public class GUIController : MonoBehaviour
 
 	void Start()
 	{
+		GameController.I.Player.SkillSystem.OnSkillUsed += OnSkillUsed;
+	}
 
+	private void OnSkillUsed(int index, PlayerSkillBase skill)
+	{
+		StartCoroutine (SkillUsedCoroutine (index, skill));
+	}
+
+	IEnumerator SkillUsedCoroutine(int index, PlayerSkillBase skill)
+	{
+		if (skill.UsesLeft != -1)
+			SkillAmounts [index].text = "" + skill.UsesLeft;
+		else
+			SkillAmounts [index].text = "";
+
+		while (true)
+		{
+			SkillGroups [index].alpha = 1 - skill.CooldownPercent;
+
+			if (skill.CooldownPercent >= 1 || skill.CooldownPercent < 0)
+				yield break;
+
+			yield return null;
+		}
 	}
 
 	public void UpdatePlayerSkills(PlayerSkillSystem skillSystem)
 	{
-		if (skillSystem.SkillIDs [0] == SkillID.None)
-			Skill1.enabled = false;
+		UpdatePlayerSkill (0, skillSystem);
+		UpdatePlayerSkill (1, skillSystem);
+		UpdatePlayerSkill (2, skillSystem);
+	}
+
+	private void UpdatePlayerSkill(int index, PlayerSkillSystem skillSystem)
+	{
+		if (skillSystem.SkillIDs [index] == SkillID.None)
+			SkillGroups [index].alpha = 0;
 		else {
-			Skill1.sprite = SkillzDatabase.I.GetIcon (skillSystem.SkillIDs [0]);
-			Skill1.enabled = true;
+			SkillImages [index].sprite = SkillzDatabase.I.GetIcon (skillSystem.SkillIDs [index]);
+			SkillGroups [index].alpha = 1;
 		}
 
-		if (skillSystem.SkillIDs [1] == SkillID.None)
-			Skill2.enabled = false;
-		else {
-			Skill2.sprite = SkillzDatabase.I.GetIcon (skillSystem.SkillIDs [1]);
-			Skill2.enabled = true;
-		}
-
-		if (skillSystem.SkillIDs [2] == SkillID.None)
-			Skill3.enabled = false;
-		else {
-			Skill3.sprite = SkillzDatabase.I.GetIcon (skillSystem.SkillIDs [2]);
-			Skill3.enabled = true;
-		}
-
+		if (skillSystem.Skills[index].UsesLeft != -1)
+			SkillAmounts [index].text = "" + skillSystem.Skills[index].UsesLeft;
+		else
+			SkillAmounts [index].text = "";
 	}
 }

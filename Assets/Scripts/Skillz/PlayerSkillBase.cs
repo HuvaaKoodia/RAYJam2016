@@ -7,12 +7,19 @@ public class PlayerSkillBase : MonoBehaviour
 	protected PlayerSkillSystem skillSystem;
 	protected PlayerMovement movementSystem;
 
-	public float CooldownDelay = -1, UsesPerRound = -1, ShotsPerActivation = 1, DelayBetweenActivations = 0.5f;
-	private float cooldownTimer = -1, usesLeft = -1;
+	public int UsesLeft{get{ return usesLeft;}}
+
+	public float CooldownDelay = -1;
+	private float cooldownTimer = -1;
+
+	public int UsesPerRound = -1, ShotsPerActivation = 1;
+	private int usesLeft = -1;
+
+	public float DelayBetweenActivations = 0.5f;
 
 	private bool activationRunning = false;
 
-	public float CooldownPercent { get { return (Time.time - cooldownTimer) / CooldownDelay; }}
+	public float CooldownPercent { get { return (cooldownTimer - Time.time) / CooldownDelay; }}
 
 	protected int currentActivation = 0;
 
