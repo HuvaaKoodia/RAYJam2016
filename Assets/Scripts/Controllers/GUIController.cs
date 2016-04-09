@@ -32,14 +32,26 @@ public class GUIController : MonoBehaviour
 		else
 			SkillAmounts [index].text = "";
 
-		while (true)
+		if (skill.UsesLeft == 0) 
 		{
-			SkillGroups [index].alpha = 1 - skill.CooldownPercent;
+			SkillImages [index].fillAmount = 1;
+			SkillGroups [index].alpha = 0.3f;
+			
+		} 
+		else 
+		{
+			while (true) {
+				SkillGroups [index].alpha = 1 - skill.CooldownPercent;
+				SkillImages [index].fillAmount = 1 - skill.CooldownPercent;
 
-			if (skill.CooldownPercent >= 1 || skill.CooldownPercent < 0)
-				yield break;
+				if (skill.CooldownPercent >= 1 || skill.CooldownPercent < 0)
+					break;
 
-			yield return null;
+				yield return null;
+			}
+
+			SkillImages [index].fillAmount = 1;
+			SkillGroups [index].alpha = 1;
 		}
 	}
 
