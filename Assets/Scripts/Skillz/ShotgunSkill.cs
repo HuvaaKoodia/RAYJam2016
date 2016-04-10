@@ -11,6 +11,8 @@ public class ShotgunSkill: PlayerSkillBase
 
 	public float BulletSpreadAngle = 90f;
 
+    public PlayAudio ShotgunAudio;
+
 	protected override void OnActivate ()
 	{
 		var bullet = Instantiate (BulletPrefab, transform.position + skillSystem.MouseDirection * 1f, Quaternion.identity) as Bullet;
@@ -22,5 +24,6 @@ public class ShotgunSkill: PlayerSkillBase
         //SHAKE
         CameraControl.I.StartShake(shakeDuration, shakeIntensity);
 
+        ShotgunAudio.Play();
 	}
 }

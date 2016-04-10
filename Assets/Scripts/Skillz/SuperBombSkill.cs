@@ -6,6 +6,8 @@ public class SuperBombSkill: PlayerSkillBase
 	public GameObject ExplosionPrefab;
 	public float ExplosionRadius;
 
+    public PlayAudio SuperBombAudio;
+
 	protected override void OnActivate ()
 	{
 		//DESTROY ENEMIES
@@ -20,6 +22,8 @@ public class SuperBombSkill: PlayerSkillBase
 		CameraControl.I.StartShake (1.5f, 10);
 
 		Instantiate (ExplosionPrefab, transform.position + skillSystem.MouseDirection * 2f, Quaternion.identity);
+
+        SuperBombAudio.Play();
 	}
 
 }
