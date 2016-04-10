@@ -10,12 +10,16 @@ public class Trap : MonoBehaviour {
     public float TrapForce;
     public int PullNumber;
 
+    SpriteRenderer sr;
     int timesDone = 0;
     int trapStage = 0; //1 = Planted, 2 = Activating, 3 = Activated
     public Collider2D[] enemies;
 
+    public Transform vortex;
+
     void Awake()
     {
+        sr = GetComponentInChildren<SpriteRenderer>();
         
     }
 
@@ -33,6 +37,8 @@ public class Trap : MonoBehaviour {
                 }
             }
         }
+        //shrink the vortex
+       if (trapStage != 0) vortex.localScale = new Vector2(vortex.localScale.x - timesDone * Time.deltaTime * 10 - 0.1f, vortex.localScale.y - timesDone * Time.deltaTime * 10 - 0.1f);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -40,20 +46,23 @@ public class Trap : MonoBehaviour {
         if (col.transform.tag == "enemy" && trapStage == 0)
         {
             trapStage = 1;
-            StartCoroutine(Launch());
-
+            StartCoroutine(Launch(1));
+            sr.color = Color.red;
         }
     }
-    IEnumerator Launch()
+    IEnumerator Launch(float waitTime)
     {
-        yield return new WaitForSeconds(ActivationTime);
+        yield return new WaitForSeconds(waitTime);
+        if (sr.enabled == true) sr.enabled = false;
+        if (vortex.gameObject.activeSelf == false) vortex.gameObject.SetActive(true);
         enemies = Physics2D.OverlapCircleAll(transform.position, Radius + 1.5f * timesDone, Layers.Enemy);
-        print(enemies);
         trapStage = 2;
+        vortex.localScale = new Vector2(5 + 1.5f * 5 * timesDone, 5 + 1.5f * 5 * timesDone);
         yield return new WaitForSeconds(PullDuration);
         trapStage = 1;
         timesDone++;
-        if (timesDone < PullNumber) StartCoroutine(Launch());
+        
+        if (timesDone < PullNumber) StartCoroutine(Launch(ActivationTime));
         else Destroy(gameObject);
     }
 }

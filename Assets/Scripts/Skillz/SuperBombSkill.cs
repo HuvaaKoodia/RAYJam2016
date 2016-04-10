@@ -14,7 +14,7 @@ public class SuperBombSkill: PlayerSkillBase
 		for (int i = 0; i < enemies.Length; i++)
 		{
 			var enemy = enemies [i].GetComponent<EnemyMovement> ();
-			enemy.Die ();
+			enemy.Die (true);
 		}
 
 		CameraControl.I.StartShake (1.5f, 10);

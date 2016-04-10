@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     Transform swing;
     Vector2 targetPos;
     public float sprint;
+    public int score;
     public int enemyType;
     public float speed;
     float zig;
@@ -99,14 +100,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-	public void Die()
+	public void Die(bool addScore)
 	{
 		if (dead)
 			return;//no double death pls!
 
 		if (DeathAnimation)
 			DeathAnimation.Animate ();
-
+        if (addScore) CameraControl.I.AddScore(score);
 		Destroy (gameObject);
 	}
 

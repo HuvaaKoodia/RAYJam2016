@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathParticles: {fileID: 135024, guid: 102bc38efc747414297bd7c823a391c1, type: 2}
   sprint: 0
+  score: 12
   enemyType: 4
   speed: 0.1
   DeathAnimation: {fileID: 11438224}

@@ -104,6 +104,8 @@ public class GameController : MonoBehaviour
 						RoundTime = 0;
 
 						EnemySpawner.level++;
+                        CameraControl.I.UpdateLevel();
+                        
 
 						yield return new WaitForSeconds(8f);
 					
@@ -113,7 +115,7 @@ public class GameController : MonoBehaviour
 							{
 								var enemy =  child.GetComponent<EnemyMovement> ();
 								if (enemy.transform.position.y > EnemySpawner.I.FieldBottomY)
-									enemy.Die ();
+									enemy.Die (false);
 							}
 
 							yield return new WaitForSeconds(1f);
@@ -125,6 +127,7 @@ public class GameController : MonoBehaviour
 							yield break;
 						}
 
+                        CameraControl.I.AddScore(200);
 						state = 2;
 						//round over goto intermission
 					}

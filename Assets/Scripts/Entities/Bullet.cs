@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		var enemy = collision.gameObject.GetComponent<EnemyMovement> ();
-		enemy.Die ();
+		enemy.Die (true);
 
 		Destroy (gameObject);
 	}
