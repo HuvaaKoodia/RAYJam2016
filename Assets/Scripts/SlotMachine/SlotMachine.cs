@@ -15,6 +15,8 @@ public class SlotMachine : MonoBehaviour
     public GameObject newParent;
     public Image SlotImage;
 
+	public int SlotIconSize = 80;
+
 	public AnimationCurve SlotStopAnimationCurve;
 
     private int SlotStackHeightThreshold, SlotStackHeight;
@@ -36,8 +38,8 @@ public class SlotMachine : MonoBehaviour
             ASkill.transform.SetParent(newParent.transform, false);
         }
 
-        SlotStackHeight = 100 * (skills.Count);
-        SlotStackHeightThreshold = 100 * (skills.Count - 3);
+		SlotStackHeight = SlotIconSize * (skills.Count);
+		SlotStackHeightThreshold = SlotIconSize * (skills.Count - 3);
     }
 
     public void ToggleSpin()
@@ -78,7 +80,7 @@ public class SlotMachine : MonoBehaviour
                 {
                     spinSpeed = 0;
                     //calculate selected skill ID when completely stopped based on the parent position.
-					int selectedIndex = Mathf.FloorToInt(SkillSet.Count * (1 - (-newParent.transform.localPosition.y + 150f) / (float)SlotStackHeight));
+					int selectedIndex = Mathf.FloorToInt(SkillSet.Count * (1 - (-newParent.transform.localPosition.y + SlotIconSize * 1.5f) / (float)SlotStackHeight));
                     
                     SelectedID = SkillSet[selectedIndex];
 

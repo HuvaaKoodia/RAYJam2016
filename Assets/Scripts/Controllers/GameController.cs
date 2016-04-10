@@ -113,7 +113,7 @@ public class GameController : MonoBehaviour
 						RoundTime = 0;
                         CameraControl.I.UpdateLevel();
                         
-						yield return new WaitForSeconds(4f);
+						yield return new WaitForSeconds(4.5f);
 					
 						if (EnemySpawner.I.AmountOfEnemies != 0)
 						{
