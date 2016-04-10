@@ -91,6 +91,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1924870293}
   m_Script: {fileID: 11500000, guid: 66756a04fd0d7014e8cd94c566b2cf3a, type: 3}
+--- !u!1 &910141629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 910141630}
+  m_Layer: 0
+  m_Name: EnemyParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &910141630
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910141629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.095282376, y: -0.09527114, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1176794074
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 100
-  player: {fileID: 26050662}
+  EnemyParent: {fileID: 910141630}
   enemy: {fileID: 11416422, guid: 0892f34763fb28041a73728293c6b8e6, type: 2}
   enemy2: {fileID: 11460600, guid: e385a37500d8a9f4eb696881f97e9cc5, type: 2}
   enemy3: {fileID: 11475588, guid: 40709fa74bf0161439b4a1c6cf719528, type: 2}

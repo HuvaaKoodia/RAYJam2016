@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private string currentAnimation = "Nothing";
     private int frame = 0;
-    private int animationFrames = 15;
+    private int animationFrames = 5;
 
     private Sprite[] sprites = new Sprite[4];
     public SpriteRenderer renderer;
@@ -54,10 +54,12 @@ public class PlayerMovement : MonoBehaviour
         if ((newPos < oldPos) && (currentAnimation == "rightOne" || currentAnimation == "rightTwo"))
         {
             renderer.sprite = sprites[0];
+            Debug.Log("0");
         }
         else if ((newPos > oldPos) && (currentAnimation == "leftOne" || currentAnimation == "leftTwo"))
         {
             renderer.sprite = sprites[2];
+            Debug.Log("2");
         }
 
         if (frame == animationFrames)
@@ -88,7 +90,8 @@ public class PlayerMovement : MonoBehaviour
                     renderer.sprite = sprites[2];
                 }
             }
-            
+
+            oldPos = newPos;
             frame = 0;
         }
 
