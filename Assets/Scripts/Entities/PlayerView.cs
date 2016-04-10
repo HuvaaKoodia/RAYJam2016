@@ -11,6 +11,8 @@ public class PlayerView : MonoBehaviour
 	public PlayerSkillSystem SkillSystem;
 	public PlayerMovement MovementSystem;
 
+	public PlayAudio DeathAudio;
+
 	public event System.Action OnDeathEvent;
 
 	public void Start()
@@ -27,6 +29,9 @@ public class PlayerView : MonoBehaviour
         CameraControl.I.StartShake(5.0f, 1.0f);
         CameraControl.I.gameOverText.gameObject.SetActive(true);
 		Destroy(gameObject);
+
+		DeathAudio.Play ();
+		DeathAudio.transform.SetParent (null, true);
 	}
 
 	public void SetKinematic(bool kinematic)
