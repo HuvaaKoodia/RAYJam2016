@@ -107,14 +107,14 @@ public class GameController : MonoBehaviour
                         CameraControl.I.UpdateLevel();
                         
 
-						yield return new WaitForSeconds(8f);
+						yield return new WaitForSeconds(4f);
 					
 						if (EnemySpawner.I.AmountOfEnemies != 0)
 						{
 							foreach (Transform child in EnemySpawner.I.EnemyParent) 
 							{
 								var enemy =  child.GetComponent<EnemyMovement> ();
-								if (enemy.transform.position.y > EnemySpawner.I.FieldBottomY)
+								if (enemy.enemyType == 4)
 									enemy.Die (false);
 							}
 
