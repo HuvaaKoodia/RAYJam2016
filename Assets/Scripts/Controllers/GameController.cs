@@ -43,6 +43,11 @@ public class GameController : MonoBehaviour
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	}
 
+    public void StartRound()
+    {
+        state = 1;
+    }
+
 	IEnumerator StateCoroutine()
 	{
 		while (true) 
@@ -155,9 +160,12 @@ public class GameController : MonoBehaviour
 				}
 
 				//new skills! New round!
-
-				state = 1;
+                Player.SetInputEnabled(true);
+                state = 4;
+                StartCoroutine(CameraControl.I.Countdown());
 			}
+            if (state == 4)
+                yield return null;
 		}
 	}
 
