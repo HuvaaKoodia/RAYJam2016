@@ -22,6 +22,8 @@ public class GUIController : MonoBehaviour
 	private float slotHeight;
 	private int currentMachine = 0;
 
+	public PlayAudio JackPotAudio;
+
 	void Awake() 
 	{
 		I = this;
@@ -227,8 +229,21 @@ public class GUIController : MonoBehaviour
 					//rig the next machine
 					++currentMachine;
 
-					if (currentMachine == 3)
+					if (currentMachine == 3) 
+					{
+						//audio
+						bool jackpot = true;
+						for (int i = 0; i < 3; i++) {
+							if (GameController.I.Player.SkillSystem.SkillIDs [i] == SkillID.None || GameController.I.Player.SkillSystem.SkillIDs [i] == SkillID.DestroySkill) {
+								jackpot = false;
+								break;
+							}
+						}
+
+						if (jackpot)
+							JackPotAudio.Play ();
 						continue;
+					}
 
 					var deadlySkills = new List<SkillID> (allSkills);
 				
