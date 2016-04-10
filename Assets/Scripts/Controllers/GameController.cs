@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
 	private void OnPlayerDeath ()
 	{
 		PlayerDead = true;
+		RemoveExcessStuff ();
 	}
 		
 	void Start()
@@ -97,22 +98,22 @@ public class GameController : MonoBehaviour
 						// game over and all that jazz
 						yield break;
 					}
-
-
+						
 					if (RoundTime < 0) 
 					{
 						RoundTime = 0;
 
 						EnemySpawner.level++;
 
-						yield return new WaitForSeconds(6f);
+						yield return new WaitForSeconds(8f);
 					
 						if (EnemySpawner.I.AmountOfEnemies != 0)
 						{
-							foreach (Transform enemy in EnemySpawner.I.EnemyParent) 
+							foreach (Transform child in EnemySpawner.I.EnemyParent) 
 							{
-								if (enemy.GetComponent<EnemyMovement> ())
-									enemy.GetComponent<EnemyMovement> ().Die ();
+								var enemy =  child.GetComponent<EnemyMovement> ();
+								if (enemy.transform.position.y > EnemySpawner.I.FieldBottomY)
+									enemy.Die ();
 							}
 
 							yield return new WaitForSeconds(1f);
@@ -155,6 +156,21 @@ public class GameController : MonoBehaviour
 				state = 1;
 			}
 		}
+	}
 
+	private void RemoveExcessStuff()
+	{
+		//remove all corpses and particle systems! LAZY!
+		var corpses = GameObject.FindObjectsOfType<EnemyDeathAnimation>();
+		foreach (var corpse in corpses) 
+		{
+			GameObject.Destroy (corpse.gameObject);	
+		}
+
+		var particleSystems = GameObject.FindObjectsOfType<ParticleSystem>();
+		foreach (var particleSystem in particleSystems) 
+		{
+			GameObject.Destroy (particleSystem.gameObject);	
+		}
 	}
 }

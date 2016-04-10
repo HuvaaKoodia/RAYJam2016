@@ -20,6 +20,7 @@ GameObject:
   - 114: {fileID: 11421608}
   - 114: {fileID: 11456772}
   - 114: {fileID: 11461314}
+  - 114: {fileID: 11493122}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -316,6 +317,23 @@ MonoBehaviour:
   - {fileID: 11456772}
   - {fileID: 11421608}
   SkillIDs: 
+--- !u!114 &11493122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbcd110fa62a424cb7ace44432662aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownDelay: -1
+  UsesPerRound: 1
+  ShotsPerActivation: 1
+  DelayBetweenActivations: 0.5
+  ExplosionPrefab: {fileID: 110392, guid: 399a2732526757b4f9ff1df89e5fd4af, type: 2}
+  ExplosionRadius: 16
 --- !u!212 &21264158
 SpriteRenderer:
   m_ObjectHideFlags: 1

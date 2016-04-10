@@ -82,8 +82,6 @@ public class SlotMachine : MonoBehaviour
                     
                     SelectedID = SkillSet[selectedIndex];
 
-					Debug.Log ("Index "+ selectedIndex + " ID " + SelectedID);
-
 					slotStopAnimation = true;
 					slotStopAnimationPercent = 0;
 					slotStopAnimationStartPos = newParent.transform.localPosition;

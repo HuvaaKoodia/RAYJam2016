@@ -18,12 +18,17 @@ public class EnemySpawner : MonoBehaviour
     public EnemyMovement enemy3; // zigzag
     public EnemyMovement enemy4; // homing 
 
+	public float FieldBottomY{get;private set;}
+
 	void Awake()
 	{
 		I = this;
 
 		level = 1;
-		field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
+
+		var worldCenter = Camera.main.ScreenToWorldPoint (Vector3.zero);
+		field = new Vector2(worldCenter.x, -worldCenter.x);
+		FieldBottomY = worldCenter.y;
 	}
 
     // Update is called once per frame     

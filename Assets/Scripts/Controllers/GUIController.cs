@@ -231,7 +231,12 @@ public class GUIController : MonoBehaviour
 						continue;
 
 					var deadlySkills = new List<SkillID> (allSkills);
-					deadlySkills.Remove (selectedID);
+				
+					for (int i = 0; i < currentMachine; i++) 
+					{
+						deadlySkills.Remove (GameController.I.Player.SkillSystem.SkillIDs[i]);
+					}
+
 					int amountOfSkulls = 3;
 
 					for (int i = 0; i < amountOfSkulls; i++) 

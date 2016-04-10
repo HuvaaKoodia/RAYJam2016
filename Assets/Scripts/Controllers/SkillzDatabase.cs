@@ -5,6 +5,7 @@ using System;
 public enum SkillID
 {
 	Bomb,
+	SuperBomb,
 	Shield,
 	//Seekers,
 	Dodge,
@@ -39,6 +40,7 @@ public class SkillzDatabase : MonoBehaviour
 		icons = new Sprite[amount];
 
 		AddSkill(SkillID.Bomb, typeof(BombSkill), "BombIcon");
+		AddSkill(SkillID.SuperBomb, typeof(SuperBombSkill), "SuperBombIcon");
 		AddSkill(SkillID.Shield, typeof(ShieldSkill), "ShieldIcon");
 		AddSkill(SkillID.Dodge, typeof(DodgeSkill), "DodgeIcon");
 		AddSkill(SkillID.Rapidfire, typeof(RapidFireSkill), "RapidfireIcon");
