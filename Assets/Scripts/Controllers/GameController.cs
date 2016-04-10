@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
 
 	private int state = 0;
 
+	public AudioSource Music;
+
 	void Awake() 
 	{
 		I = this;
@@ -89,6 +91,8 @@ public class GameController : MonoBehaviour
 			//gameplay state
 			if (state == 1)
 			{
+				Music.volume = 1f;
+				Music.Play ();
 				Player.SetInputEnabled(true);
 
 				RoundTime = 10f;
@@ -104,6 +108,7 @@ public class GameController : MonoBehaviour
 
 					if (PlayerDead) 
 					{
+						StartCoroutine (FadeMusicVolume());
 						// game over and all that jazz
 						yield break;
 					}
@@ -129,6 +134,7 @@ public class GameController : MonoBehaviour
 
 						if (PlayerDead) 
 						{
+							StartCoroutine (FadeMusicVolume());
 							// game over and all that jazz
 							yield break;
 						}
@@ -145,6 +151,8 @@ public class GameController : MonoBehaviour
 			//intermission state
 			if (state == 2)
 			{
+				StartCoroutine (FadeMusicVolume());
+
 				Player.SetInputEnabled (false);
 
 				GUIController.I.ShowSlotMachinePanel ();
@@ -184,5 +192,16 @@ public class GameController : MonoBehaviour
 		{
 			GameObject.Destroy (particleSystem.gameObject);	
 		}
+	}
+
+	IEnumerator FadeMusicVolume()
+	{
+		while (Music.volume > 0) 
+		{
+			Music.volume -= Time.deltaTime;
+			yield return null;
+		}
+		Music.Pause();
+
 	}
 }

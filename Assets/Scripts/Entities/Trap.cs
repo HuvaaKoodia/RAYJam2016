@@ -10,6 +10,8 @@ public class Trap : MonoBehaviour {
     public float TrapForce;
     public int PullNumber;
 
+	public PlayAudio TrapAudio;
+
     SpriteRenderer sr;
     int timesDone = 0;
     int trapStage = 0; //1 = Planted, 2 = Activating, 3 = Activated
@@ -48,11 +50,14 @@ public class Trap : MonoBehaviour {
             trapStage = 1;
             StartCoroutine(Launch(1));
             sr.color = Color.red;
+
+			TrapAudio.Play();
         }
     }
     IEnumerator Launch(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+
         //if (sr.enabled == true) sr.enabled = false;
         if (vortex.gameObject.activeSelf == false) vortex.gameObject.SetActive(true);
         enemies = Physics2D.OverlapCircleAll(transform.position, Radius + 1.5f * timesDone, Layers.Enemy);

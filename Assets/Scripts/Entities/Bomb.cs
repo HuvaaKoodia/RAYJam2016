@@ -18,6 +18,10 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(Lifetime);
         
         Destroy(gameObject);
+
+
+		BombExplodeAudio.Play();
+		BombExplodeAudio.transform.SetParent(null, true);
     }
 
 
@@ -25,9 +29,6 @@ public class Bomb : MonoBehaviour
     {
         //DESTROY ENEMIESdw
         var enemies = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, Layers.Enemy);
-
-        BombExplodeAudio.Play();
-        BombExplodeAudio.transform.SetParent(null, true);
 
         for (int i = 0; i < enemies.Length; i++)
         {
