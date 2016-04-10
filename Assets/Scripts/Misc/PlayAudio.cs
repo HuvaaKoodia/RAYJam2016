@@ -7,6 +7,8 @@ public class PlayAudio : MonoBehaviour
 
 	public void Play()
 	{
-		Sources [Random.Range (0, Sources.Length)].Play();
+        var source = Sources[Random.Range(0, Sources.Length)];
+        source.enabled = true;
+		source.Play();
 	}
 }

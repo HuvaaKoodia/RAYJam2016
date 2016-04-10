@@ -11,10 +11,12 @@ public class Bomb : MonoBehaviour
     public Rigidbody2D Rigidbody;
     public float Lifetime = 1f, ExplosionRadius = 5f;
 
+    public PlayAudio BombExplodeAudio;
+
     IEnumerator Start()
     {
         yield return new WaitForSeconds(Lifetime);
-
+        
         Destroy(gameObject);
     }
 
@@ -23,6 +25,9 @@ public class Bomb : MonoBehaviour
     {
         //DESTROY ENEMIESdw
         var enemies = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, Layers.Enemy);
+
+        BombExplodeAudio.Play();
+        BombExplodeAudio.transform.SetParent(null, true);
 
         for (int i = 0; i < enemies.Length; i++)
         {

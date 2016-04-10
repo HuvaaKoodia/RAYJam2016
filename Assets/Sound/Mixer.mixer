@@ -30,6 +30,7 @@ AudioMixerController:
     - 2e6ca7a7c38cdf547b33c604e010c531
     - a1d2ebc07d6d61545973da6c5ae423ef
     - 3498f23d83fa9f243bd72a06b2768a22
+    - 4267f1b7a0d03d94c8bdce984a5f2fd5
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -55,6 +56,7 @@ AudioMixerGroupController:
   - {fileID: 24350172}
   - {fileID: 24324314}
   - {fileID: 24358284}
+  - {fileID: 24363842}
   m_Volume: cd7bbfdd502304346a051b1c9ee70e19
   m_Pitch: 63f0040713b08c4409f68f3c62ece7a2
   m_Effects:
@@ -229,6 +231,23 @@ AudioMixerGroupController:
   m_Pitch: f3608c00a95394e42987b4ee0155a1e4
   m_Effects:
   - {fileID: 24454264}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &24363842
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: BombExplode
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 4267f1b7a0d03d94c8bdce984a5f2fd5
+  m_Children: []
+  m_Volume: 522c29aadd7a51841acef8504e80a92a
+  m_Pitch: 6bf0aa5e68cd9da4eb1971b2cfbb668f
+  m_Effects:
+  - {fileID: 24495172}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -449,6 +468,19 @@ AudioMixerEffectController:
   m_EffectID: 1bed691a97ab7294eaf0c90661237858
   m_EffectName: Attenuation
   m_MixLevel: c1a3ad893d588b24a8d693b493fef82c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &24495172
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 99648d2c036300241bf0c2cc3d92faac
+  m_EffectName: Attenuation
+  m_MixLevel: 863d1c923cbad60418038845d1be8eec
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
