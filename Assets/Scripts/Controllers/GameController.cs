@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
 				Player.SkillSystem.ReplaceSkill(1, skills[1]);
 				Player.SkillSystem.ReplaceSkill(2, skills[2]);
 
-				GUIController.I.ShowSlotMachinePanel ();
+				//GUIController.I.ShowSlotMachinePanel ();
 				while (GUIController.I.SlotMachineVisible) yield return null;
 
 				//wait until game starts , countdown
