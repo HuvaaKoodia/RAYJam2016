@@ -32,7 +32,12 @@ public class PlayerMovement : MonoBehaviour
 		Dodging = false;
         rb = GetComponent<Rigidbody2D>();
 
-        sprites = Resources.LoadAll<Sprite>("Player/Cat_SpriteSheet");
+		if (Random.Range (0, 100) < 50) {
+			sprites = Resources.LoadAll<Sprite> ("Player/Cat_SpriteSheet");
+		}
+		else sprites = Resources.LoadAll<Sprite> ("Player/Dog_SpriteSheet");
+
+		renderer.sprite = sprites[0];
 
         oldPos = transform.position.x;
     }
@@ -54,12 +59,10 @@ public class PlayerMovement : MonoBehaviour
         if ((newPos < oldPos) && (currentAnimation == "rightOne" || currentAnimation == "rightTwo"))
         {
             renderer.sprite = sprites[0];
-            Debug.Log("0");
         }
         else if ((newPos > oldPos) && (currentAnimation == "leftOne" || currentAnimation == "leftTwo"))
         {
             renderer.sprite = sprites[2];
-            Debug.Log("2");
         }
 
         if (frame == animationFrames)

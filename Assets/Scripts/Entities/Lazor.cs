@@ -34,6 +34,7 @@ public class Lazor : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D collider)
 	{
-		Destroy (collider.gameObject);
+		var enemy = collider.gameObject.GetComponent<EnemyMovement> ();
+		enemy.Die ();
 	}
 }

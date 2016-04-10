@@ -12,12 +12,14 @@ public class EnemyMovement : MonoBehaviour
     public int enemyType;
     public float speed;
     float zig;
+	bool dead = true;
 
+	public EnemyDeathAnimation DeathAnimation;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+		rb = GetComponent<Rigidbody2D>();
         swing = transform.GetChild(1).transform;
 
         sprint = 20;
@@ -30,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
         if (rb.position.y < Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y - 2) Destroy(gameObject);
         if (GameController.I.PlayerDead == true)
         {
+			dead = true;
             Instantiate(DeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
@@ -95,4 +98,20 @@ public class EnemyMovement : MonoBehaviour
             collision.gameObject.GetComponent<PlayerView>().Die();
         }
     }
+
+	public void Die()
+	{
+		if (dead)
+			return;//no double death pls!
+
+		if (DeathAnimation)
+			DeathAnimation.Animate ();
+
+		Destroy (gameObject);
+	}
+
+	public void AddSpin(float spin)
+	{
+		rb.AddTorque (spin, ForceMode2D.Impulse);
+	}
 }

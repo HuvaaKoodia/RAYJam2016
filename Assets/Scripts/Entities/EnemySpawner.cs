@@ -17,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
     public EnemyMovement enemy2; // Goes down with sprints
     public EnemyMovement enemy3; // zigzag
     public EnemyMovement enemy4; // homing 
-    EnemyMovement[] enemies;
 
 	void Awake()
 	{
@@ -25,7 +24,6 @@ public class EnemySpawner : MonoBehaviour
 
 		level = 1;
 		field = new Vector2(Camera.main.ScreenToWorldPoint(Vector3.zero).x, -Camera.main.ScreenToWorldPoint(Vector3.zero).x);
-		enemies = new EnemyMovement[enemyAmount];
 	}
 
     // Update is called once per frame     
@@ -85,15 +83,19 @@ public class EnemySpawner : MonoBehaviour
 		StartCoroutine(Spawn(enemy, 1, Mathf.Clamp(0.15f*1/level,0.02f,1), field.x, field.y));
 	}
 
-    IEnumerator Spawn(EnemyMovement enemy, int amount, float spawnSpeed, float spawnMin, float spawnMax)
+	IEnumerator Spawn(EnemyMovement enemyPrefab, int amount, float spawnSpeed, float spawnMin, float spawnMax)
     {
-        if (enemy.enemyType == 1) // Red blocks
+        if (enemyPrefab.enemyType == 1) // Red blocks
         {
             while (GameController.I.RoundTime > 0 && GameController.I.PlayerDead == false)
             {
-                EnemyMovement def = Instantiate(enemy, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
-				def.transform.SetParent (EnemyParent);
-                def.speed = Random.Range(3, 5) + (float)level/5;
+				EnemyMovement enemy = Instantiate(enemyPrefab, new Vector2(Random.Range(spawnMin, spawnMax), 10), Quaternion.identity) as EnemyMovement;
+				enemy.transform.SetParent (EnemyParent);
+                enemy.speed = Random.Range(3, 5) + (float)level/5;
+
+				//SPIN!
+				enemy.AddSpin(Random.Range(-0.5f, 0.5f));
+
                 yield return new WaitForSeconds(Mathf.Clamp(0.15f * 1 / level, 0.02f, 1));
             }
         }
@@ -101,8 +103,8 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
-                enemies[i] = Instantiate(enemy, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
-				enemies [i].transform.SetParent (EnemyParent);
+				EnemyMovement enemy = Instantiate(enemyPrefab, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
+				enemy.transform.SetParent (EnemyParent);
                 yield return new WaitForSeconds(spawnSpeed);
             }
         }

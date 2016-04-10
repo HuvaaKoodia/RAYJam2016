@@ -26,7 +26,8 @@ public class Bomb : MonoBehaviour
 
         for (int i = 0; i < enemies.Length; i++)
         {
-            GameObject.Destroy(enemies[i].gameObject);
+			var enemy = enemies [i].GetComponent<EnemyMovement> ();
+			enemy.Die ();
         }
         //SHAKE
         CameraControl.I.StartShake(shakeDuration, shakeIntensity);

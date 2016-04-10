@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
 
 				//wait until game starts
 				state = 1;
-				GUIController.I.ShowSlotMachinePanel ();
+				//GUIController.I.ShowSlotMachinePanel ();
 				while (GUIController.I.SlotMachineVisible) yield return null;
 			}
 
@@ -91,22 +91,37 @@ public class GameController : MonoBehaviour
 				while (state == 1) 
 				{
 					RoundTime -= Time.deltaTime;
+
+					if (PlayerDead) 
+					{
+						// game over and all that jazz
+						yield break;
+					}
+
+
 					if (RoundTime < 0) 
 					{
 						RoundTime = 0;
 
 						EnemySpawner.level++;
 
-						while (EnemySpawner.I.AmountOfEnemies != 0) 
+						yield return new WaitForSeconds(6f);
+					
+						if (EnemySpawner.I.AmountOfEnemies != 0)
 						{
-							if (PlayerDead) 
+							foreach (Transform enemy in EnemySpawner.I.EnemyParent) 
 							{
-								// game over and all that jazz
-								yield break;
+								if (enemy.GetComponent<EnemyMovement> ())
+									enemy.GetComponent<EnemyMovement> ().Die ();
 							}
 
+							yield return new WaitForSeconds(1f);
+						}
 
-							yield return null;
+						if (PlayerDead) 
+						{
+							// game over and all that jazz
+							yield break;
 						}
 
 						state = 2;

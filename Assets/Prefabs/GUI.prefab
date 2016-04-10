@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &113598
 GameObject:
   m_ObjectHideFlags: 1
@@ -530,6 +530,37 @@ MonoBehaviour:
   spinSpeed: 0
   newParent: {fileID: 148734}
   SlotImage: {fileID: 11450794, guid: e16c1472948ca104cb0513dc446b1049, type: 2}
+  SlotStopAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 6.252665
+      outSlope: 6.252665
+      tangentMode: 10
+    - time: 0.24048576
+      value: 1.5036769
+      inSlope: 1.5076228
+      outSlope: 1.5076228
+      tangentMode: 10
+    - time: 0.4682462
+      value: 0.7663208
+      inSlope: -1.0030293
+      outSlope: -1.0030293
+      tangentMode: 10
+    - time: 0.6580193
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.99874634
+      value: 1.0015758
+      inSlope: 0.0046248976
+      outSlope: 0.0046248976
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11429956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -546,6 +577,37 @@ MonoBehaviour:
   spinSpeed: 0
   newParent: {fileID: 138796}
   SlotImage: {fileID: 11450794, guid: e16c1472948ca104cb0513dc446b1049, type: 2}
+  SlotStopAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 6.252665
+      outSlope: 6.252665
+      tangentMode: 10
+    - time: 0.24048576
+      value: 1.5036769
+      inSlope: 1.5076228
+      outSlope: 1.5076228
+      tangentMode: 10
+    - time: 0.4682462
+      value: 0.7663208
+      inSlope: -1.0030293
+      outSlope: -1.0030293
+      tangentMode: 10
+    - time: 0.6580193
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.99874634
+      value: 1.0015758
+      inSlope: 0.0046248976
+      outSlope: 0.0046248976
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11433802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -676,6 +738,37 @@ MonoBehaviour:
   spinSpeed: 0
   newParent: {fileID: 103680}
   SlotImage: {fileID: 11450794, guid: e16c1472948ca104cb0513dc446b1049, type: 2}
+  SlotStopAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 6.252665
+      outSlope: 6.252665
+      tangentMode: 10
+    - time: 0.24048576
+      value: 1.5036769
+      inSlope: 1.5076228
+      outSlope: 1.5076228
+      tangentMode: 10
+    - time: 0.4682462
+      value: 0.7663208
+      inSlope: -1.0030293
+      outSlope: -1.0030293
+      tangentMode: 10
+    - time: 0.6580193
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.99874634
+      value: 1.0015758
+      inSlope: 0.0046248976
+      outSlope: 0.0046248976
+      tangentMode: 10
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11455838
 MonoBehaviour:
   m_ObjectHideFlags: 1
