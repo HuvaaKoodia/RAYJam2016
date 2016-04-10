@@ -7,6 +7,8 @@ public class ShieldSkill: PlayerSkillBase
 
 	public float ShieldDuration = 2f;
 
+    public PlayAudio ShieldAudio;
+
 	protected override void OnActivate ()
 	{
 		StopCoroutine ("ShieldCoroutine");
@@ -16,6 +18,8 @@ public class ShieldSkill: PlayerSkillBase
 	IEnumerator ShieldCoroutine()
 	{
 		ShieldObject.SetActive (true);
+
+        ShieldAudio.Play();
 
 		yield return new WaitForSeconds (ShieldDuration);
 

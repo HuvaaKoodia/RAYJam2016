@@ -238,7 +238,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Slotmachine
+  m_Name: SlotmachineJackpot
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: bbb2ecb19b7772f4ca4678703224748e
   m_Children: []

@@ -8,6 +8,8 @@ public class LazorSkill : PlayerSkillBase
 
     public Lazor LazorPrefab;
 
+    public PlayAudio LaserAudio;
+
     protected override void OnActivate()
     {
         //angle hack
@@ -19,5 +21,7 @@ public class LazorSkill : PlayerSkillBase
         CameraControl.I.StartShake(shakeDuration, shakeIntensity);
 
         Instantiate(LazorPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+
+        LaserAudio.Play();
     }
 }
