@@ -76,8 +76,11 @@ public class GameController : MonoBehaviour
 				Player.SkillSystem.ReplaceSkill(1, skills[1]);
 				Player.SkillSystem.ReplaceSkill(2, skills[2]);
 
-				//wait until game starts
-				state = 1;
+				//wait until game starts , countdown
+                Player.SetInputEnabled(true);
+                state = 4;
+                GUIController.I.UpdatePlayerSkills(Player.SkillSystem);
+                StartCoroutine(CameraControl.I.Countdown());
 				//GUIController.I.ShowSlotMachinePanel ();
 				while (GUIController.I.SlotMachineVisible) yield return null;
 			}
@@ -107,19 +110,17 @@ public class GameController : MonoBehaviour
 					if (RoundTime < 0) 
 					{
 						RoundTime = 0;
-
-						EnemySpawner.level++;
                         CameraControl.I.UpdateLevel();
                         
 
-						yield return new WaitForSeconds(8f);
+						yield return new WaitForSeconds(4f);
 					
 						if (EnemySpawner.I.AmountOfEnemies != 0)
 						{
 							foreach (Transform child in EnemySpawner.I.EnemyParent) 
 							{
 								var enemy =  child.GetComponent<EnemyMovement> ();
-								if (enemy.transform.position.y > EnemySpawner.I.FieldBottomY)
+								if (enemy.enemyType == 4)
 									enemy.Die (false);
 							}
 

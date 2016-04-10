@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f15594943ecbd4fadb86564f51cc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathPrefab: {fileID: 135024, guid: 72577d9cb45b56a45aad99974e924168, type: 2}
+  DeathPrefab: {fileID: 147664, guid: 5a4bc5443100e944fb91ae6c6748451b, type: 2}
   ScaleCurve:
     serializedVersion: 2
     m_Curve:

@@ -10,7 +10,7 @@ public class CameraControl : MonoBehaviour
     public Text centerText;
     public Text levelText;
     public Text timerText;
-    public float score;
+    float score;
     public float countdownSpeed;
 
     float shakeIntensity;
@@ -70,6 +70,7 @@ public class CameraControl : MonoBehaviour
             yield return new WaitForSeconds(countdownSpeed);
         }
         centerText.gameObject.SetActive(false);
+        EnemySpawner.level++;
         GameController.I.StartRound();
     }
 }
