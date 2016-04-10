@@ -344,7 +344,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  AnimationSpeedMulti: 1.5
+  AnimationSpeedMulti: 2
 --- !u!114 &11416422
 MonoBehaviour:
   m_ObjectHideFlags: 1

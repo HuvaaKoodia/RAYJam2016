@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     public int enemyType;
     public float speed;
     float zig;
-	bool dead = true;
+	bool dead = false;
 
 	public EnemyDeathAnimation DeathAnimation;
 
