@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
 	public PlayerView Player;
 	public float RoundTime{get;private set;}
 
+	public Transform PlayerStartPosition;
+
 	public bool PlayerDead{get;private set;}
 
 	private int state = 0;
@@ -44,14 +46,13 @@ public class GameController : MonoBehaviour
 	{
 		while (true) 
 		{
-			Player.gameObject.SetActive (false);
+			Player.SetInputEnabled (false);
+			if (PlayerStartPosition) Player.transform.position = PlayerStartPosition.position;
 
 			//setup state
 			if (state == 0) 
 			{
-				//randomize three skills for player
-
-				//HACK
+				//randomize three starting skills
 				List<SkillID> skills = new List<SkillID>();
 			
 				for (int i = 0; i < 3; i++) 
@@ -69,31 +70,26 @@ public class GameController : MonoBehaviour
 				Player.SkillSystem.ReplaceSkill(1, skills[1]);
 				Player.SkillSystem.ReplaceSkill(2, skills[2]);
 
-				GUIController.I.UpdatePlayerSkills (Player.SkillSystem);
-
 				//wait until game starts
 				state = 1;
+				GUIController.I.ShowSlotMachinePanel ();
 				while (GUIController.I.SlotMachineVisible) yield return null;
 			}
 
 			//gameplay state
 			if (state == 1)
 			{
-				Player.gameObject.SetActive (true);
+				Player.SetInputEnabled(true);
 
 				RoundTime = 10f;
 			
 				EnemySpawner.I.StartWave ();
 
 				Player.SkillSystem.RefreshSkills ();
+				GUIController.I.UpdatePlayerSkills (Player.SkillSystem);
 
 				while (state == 1) 
 				{
-					if (PlayerDead) 
-					{
-						// game over and all that jazz
-					}
-
 					RoundTime -= Time.deltaTime;
 					if (RoundTime < 0) 
 					{
@@ -101,8 +97,17 @@ public class GameController : MonoBehaviour
 
 						EnemySpawner.level++;
 
-						while (EnemySpawner.I.AmountOfEnemies != 0)
+						while (EnemySpawner.I.AmountOfEnemies != 0) 
+						{
+							if (PlayerDead) 
+							{
+								// game over and all that jazz
+								yield break;
+							}
+
+
 							yield return null;
+						}
 
 						state = 2;
 						//round over goto intermission
@@ -115,9 +120,15 @@ public class GameController : MonoBehaviour
 			//intermission state
 			if (state == 2)
 			{
-				Player.gameObject.SetActive (false);
+				Player.SetInputEnabled (false);
 
 				GUIController.I.ShowSlotMachinePanel ();
+
+				while (GUIController.I.SlotMachineMoving)
+					yield return null;
+
+				if (PlayerStartPosition) Player.transform.position = PlayerStartPosition.position;
+
 
 				while (GUIController.I.SlotMachineVisible) yield return null;
 				{

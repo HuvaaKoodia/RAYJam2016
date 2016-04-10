@@ -30,6 +30,7 @@ public class GUIController : MonoBehaviour
 	void Start()
 	{
 		SlotMachineVisible = false;
+		SlotMachineMoving = false;
 
 		allSkills = new List<SkillID> ();
 
@@ -42,6 +43,7 @@ public class GUIController : MonoBehaviour
 
 		slotHeight = CanvasRect.sizeDelta.y + 50;
 		SlotMachinePanel.anchoredPosition = Vector3.up * slotHeight;
+		SlotMachinePanel.gameObject.SetActive (true);
 	}
 
 	private void OnSkillUsed(int index, PlayerSkillBase skill)
@@ -155,14 +157,14 @@ public class GUIController : MonoBehaviour
 		StartCoroutine(SlotMachineCoroutine(-1));
 	}
 
-	private bool slotMachineMoving = false;
+	public bool SlotMachineMoving { get; private set;}
 
 	public bool SlotMachineVisible { get; private set;}
 	public float SlotMachineAppearSpeed = 1f;
 
 	IEnumerator SlotMachineCoroutine(int direction)
 	{
-		slotMachineMoving = true;
+		SlotMachineMoving = true;
 		float percent = 0;
 		while (percent < 1)
 		{
@@ -176,13 +178,13 @@ public class GUIController : MonoBehaviour
 
 			yield return null;
 		}
-		slotMachineMoving = false;
+		SlotMachineMoving = false;
 		if (direction < 0) SlotMachineVisible = false;
 	}
 
 	IEnumerator SlotMachineInputCoroutine()
 	{
-		while (slotMachineMoving)
+		while (SlotMachineMoving)
 			yield return null;
 
 		UpdatePlayerSkill (0, GameController.I.Player.SkillSystem, false);

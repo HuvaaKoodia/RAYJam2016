@@ -184,6 +184,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 787545239}
   m_Script: {fileID: 11500000, guid: 66756a04fd0d7014e8cd94c566b2cf3a, type: 3}
+--- !u!1 &619092054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 619092055}
+  m_Layer: 0
+  m_Name: PlayerStartPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619092055
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619092054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.002343961, y: -4.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &731621556
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 153577813}
+  PlayerStartPosition: {fileID: 619092055}
 --- !u!4 &1705198588
 Transform:
   m_ObjectHideFlags: 0
@@ -581,6 +609,18 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 22417288, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -811,6 +851,298 @@ Prefab:
     - target: {fileID: 22418032, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 112704, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].time
+      value: 0.24048576
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].value
+      value: 1.5036769
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].time
+      value: 0.4682462
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].value
+      value: 0.7663208
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].inSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].outSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].time
+      value: 0.6580193
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].time
+      value: 0.24048576
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].value
+      value: 1.5036769
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].time
+      value: 0.4682462
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].value
+      value: 0.7663208
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].inSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].outSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].time
+      value: 0.6580193
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].inSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].outSlope
+      value: 6.252665
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[0].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].time
+      value: 0.24048576
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].value
+      value: 1.5036769
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].inSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].outSlope
+      value: 1.5076228
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[1].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].time
+      value: 0.4682462
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].value
+      value: 0.7663208
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].inSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].outSlope
+      value: -1.0030293
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[2].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].time
+      value: 0.6580193
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[3].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].time
+      value: 0.99874634
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].value
+      value: 1.0015758
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].inSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].outSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11455310, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].time
+      value: 0.99874634
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].value
+      value: 1.0015758
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].inSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].outSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429956, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].tangentMode
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].time
+      value: 0.99874634
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].value
+      value: 1.0015758
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].inSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].outSlope
+      value: 0.0046248976
+      objectReference: {fileID: 0}
+    - target: {fileID: 11423618, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}
+      propertyPath: SlotStopAnimationCurve.m_Curve.Array.data[4].tangentMode
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92148772b5f96904b820ac7e79eedfc8, type: 2}

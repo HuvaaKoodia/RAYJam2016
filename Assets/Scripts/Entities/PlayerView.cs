@@ -9,6 +9,7 @@ public class PlayerView : MonoBehaviour
 
 	public GameObject DeathParticles;
 	public PlayerSkillSystem SkillSystem;
+	public PlayerMovement MovementSystem;
 
 	public event System.Action OnDeathEvent;
 
@@ -31,5 +32,11 @@ public class PlayerView : MonoBehaviour
 	{
 		Rigidbody.isKinematic = kinematic;
 		Collider.isTrigger = kinematic;
+	}
+
+	public void SetInputEnabled(bool enabled)
+	{
+		SkillSystem.enabled = enabled;
+		MovementSystem.enabled = enabled;
 	}
 }

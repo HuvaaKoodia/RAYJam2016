@@ -15,6 +15,8 @@ public class SlotMachine : MonoBehaviour
     public GameObject newParent;
     public Image SlotImage;
 
+	public AnimationCurve SlotStopAnimationCurve;
+
     private int SlotStackHeightThreshold, SlotStackHeight;
 
     public void SetItems(List<SkillID> skills)
@@ -42,11 +44,29 @@ public class SlotMachine : MonoBehaviour
     {
         spinning = !spinning;
         spinSpeed = SpinSpeed;
+		slotStopAnimation = false;
     }
+
+	private float slotStopAnimationPercent = 0;
+	private bool slotStopAnimation = false;
+	private Vector3 slotStopAnimationStartPos, slotStopAnimationEndPos;
 
     // Update is called once per frame
     void Update()
     {
+		if (slotStopAnimation) 
+		{
+			slotStopAnimationPercent += Time.deltaTime;
+
+			if (slotStopAnimationPercent > 1) 
+			{
+				slotStopAnimationPercent = 1;
+				slotStopAnimation = false;
+			}
+
+			newParent.transform.localPosition = slotStopAnimationStartPos + (slotStopAnimationEndPos - slotStopAnimationStartPos) * SlotStopAnimationCurve.Evaluate(slotStopAnimationPercent);
+		}
+
         if (spinSpeed > 0) 
         {
             //decrease speed
@@ -54,7 +74,7 @@ public class SlotMachine : MonoBehaviour
             {
                 spinSpeed = Mathf.Lerp(spinSpeed, 0, Time.deltaTime * SpinStopSpeed);
 
-                if (spinSpeed < 0.5f) 
+                if (spinSpeed < 5f) 
                 {
                     spinSpeed = 0;
                     //calculate selected skill ID when completely stopped based on the parent position.
@@ -63,6 +83,11 @@ public class SlotMachine : MonoBehaviour
                     SelectedID = SkillSet[selectedIndex];
 
 					Debug.Log ("Index "+ selectedIndex + " ID " + SelectedID);
+
+					slotStopAnimation = true;
+					slotStopAnimationPercent = 0;
+					slotStopAnimationStartPos = newParent.transform.localPosition;
+					slotStopAnimationEndPos = Vector3.up * (1-((selectedIndex +2) / (float)SkillSet.Count)) * -SlotStackHeight;
                 }
             }
 
