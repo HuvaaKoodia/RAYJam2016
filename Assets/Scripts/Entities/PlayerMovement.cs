@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     float oldPos;
     float newPos;
 
-	public PlayerView Player;
-	public bool Dodging{ get; private set;}
-	public float speed, DodgeSpeed = 15f;
-	public float DodgeMinDistance = 0.5f, DodgeEndDistance = 0.1f;
+    float minX, maxX, minY, maxY;
+
+    public PlayerView Player;
+    public bool Dodging { get; private set; }
+    public float speed, DodgeSpeed = 15f;
+    public float DodgeMinDistance = 0.5f, DodgeEndDistance = 0.1f;
 
     private string currentAnimation = "Nothing";
     private int frame = 0;
@@ -29,24 +31,30 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		Dodging = false;
+        Dodging = false;
         rb = GetComponent<Rigidbody2D>();
 
-		if (Random.Range (0, 100) < 50) {
-			sprites = Resources.LoadAll<Sprite> ("Player/Cat_SpriteSheet");
-		}
-		else sprites = Resources.LoadAll<Sprite> ("Player/Dog_SpriteSheet");
+        if (Random.Range(0, 100) < 50)
+        {
+            sprites = Resources.LoadAll<Sprite>("Player/Cat_SpriteSheet");
+        }
+        else sprites = Resources.LoadAll<Sprite>("Player/Dog_SpriteSheet");
 
-		renderer.sprite = sprites[0];
+        renderer.sprite = sprites[0];
 
         oldPos = transform.position.x;
+
+        minX = EnemySpawner.field.x;
+        maxX = EnemySpawner.field.y;
+        minY = Camera.main.ScreenToWorldPoint(Vector3.zero).y;
+        maxY = -Camera.main.ScreenToWorldPoint(Vector3.zero).y;
     }
 
     // Update is called once per frame
     void Update()
     {
-		if (Dodging)
-			return;
+        if (Dodging)
+            return;
 
         //if (frame == animationFrames) frame = 0;
         //frame++;
@@ -98,48 +106,48 @@ public class PlayerMovement : MonoBehaviour
             frame = 0;
         }
 
+
         if (inputX != 0 || inputY != 0)
         {
             rb.velocity = Vector2.zero;
-
-            // Prevent movement outside the screen
-            if (rb.position.x < EnemySpawner.field.x && inputX < 0) inputX = 0;
-            if (rb.position.x > EnemySpawner.field.y && inputX > 0) inputX = 0;
-            if (rb.position.y < Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY < 0) inputY = 0;
-            if (rb.position.y > -Camera.main.ScreenToWorldPoint(Vector3.zero).y && inputY > 0) inputY = 0;
             rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime, transform.position.y + inputY * speed * Time.deltaTime));
 
-            rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime,transform.position.y +  inputY * speed * Time.deltaTime));
+            rb.MovePosition(new Vector2(transform.position.x + inputX * speed * Time.deltaTime, transform.position.y + inputY * speed * Time.deltaTime));
         }
-     
+
+        //Prevent movement outside the screen
+        if (rb.position.x < minX) rb.position = new Vector2(minX, rb.position.y);
+        if (rb.position.x > maxX) rb.position = new Vector2(maxX, rb.position.y);
+        if (rb.position.y < minY) rb.position = new Vector2(rb.position.x, minY);
+        if (rb.position.y > maxY) rb.position = new Vector2(rb.position.x, maxY);
         frame++;
     }
 
-	public void Dodge(Vector3 worldPosition)
-	{
-		if (Dodging)
-			return;
-		if (Vector3.Distance(transform.position, worldPosition) < DodgeMinDistance) return; 
-		StartCoroutine(DodgeCoroutine(worldPosition));
-	}
+    public void Dodge(Vector3 worldPosition)
+    {
+        if (Dodging)
+            return;
+        if (Vector3.Distance(transform.position, worldPosition) < DodgeMinDistance) return;
+        StartCoroutine(DodgeCoroutine(worldPosition));
+    }
 
-	private IEnumerator DodgeCoroutine(Vector3 worldPosition) 
-	{
-		Dodging = true;
-		Player.SetKinematic (true);
+    private IEnumerator DodgeCoroutine(Vector3 worldPosition)
+    {
+        Dodging = true;
+        Player.SetKinematic(true);
 
-		Vector3 oldPosition;
-		while(Vector3.Distance(transform.position, worldPosition) > DodgeEndDistance)
-		{
-			oldPosition = transform.position;
-			transform.position = Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * DodgeSpeed);
+        Vector3 oldPosition;
+        while (Vector3.Distance(transform.position, worldPosition) > DodgeEndDistance)
+        {
+            oldPosition = transform.position;
+            transform.position = Vector3.Lerp(transform.position, worldPosition, Time.deltaTime * DodgeSpeed);
 
-			yield return null;
-		}
+            yield return null;
+        }
 
-		transform.position = worldPosition;
+        transform.position = worldPosition;
 
-		Dodging = false;
-		Player.SetKinematic (false);
-	}
+        Dodging = false;
+        Player.SetKinematic(false);
+    }
 }

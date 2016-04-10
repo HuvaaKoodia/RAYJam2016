@@ -53,7 +53,7 @@ public class Trap : MonoBehaviour {
     IEnumerator Launch(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        if (sr.enabled == true) sr.enabled = false;
+        //if (sr.enabled == true) sr.enabled = false;
         if (vortex.gameObject.activeSelf == false) vortex.gameObject.SetActive(true);
         enemies = Physics2D.OverlapCircleAll(transform.position, Radius + 1.5f * timesDone, Layers.Enemy);
         trapStage = 2;

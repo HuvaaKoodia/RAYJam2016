@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
                     }
                 case 2:
                     {
-                        StartCoroutine(Spawn(enemy2, Random.Range(5, 6), 0.2f, min, min));
+                        StartCoroutine(Spawn(enemy2, 1, 0.2f, min, min));
                         break;
                     }
                 case 3:
@@ -106,6 +106,22 @@ public class EnemySpawner : MonoBehaviour
         }
         else // Everything else as waves
         {
+            if (enemyPrefab.enemyType == 2)
+            {
+                print("enemy2");
+                EnemyMovement enemy = Instantiate(enemyPrefab, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
+                enemy.transform.SetParent(EnemyParent);
+                yield return new WaitForSeconds(spawnSpeed);
+                enemy = Instantiate(enemyPrefab, new Vector2(spawnMin-1, 10), Quaternion.identity) as EnemyMovement;
+                enemy.transform.SetParent(EnemyParent);
+                enemy = Instantiate(enemyPrefab, new Vector2(spawnMin  + 1, 10), Quaternion.identity) as EnemyMovement;
+                enemy.transform.SetParent(EnemyParent);
+                yield return new WaitForSeconds(spawnSpeed);
+                enemy = Instantiate(enemyPrefab, new Vector2(spawnMin - 2, 10), Quaternion.identity) as EnemyMovement;
+                enemy.transform.SetParent(EnemyParent);
+                enemy = Instantiate(enemyPrefab, new Vector2(spawnMin + 2, 10), Quaternion.identity) as EnemyMovement;
+                enemy.transform.SetParent(EnemyParent);
+            }
             for (int i = 0; i < amount; i++)
             {
 				EnemyMovement enemy = Instantiate(enemyPrefab, new Vector2(spawnMin, 10), Quaternion.identity) as EnemyMovement;
