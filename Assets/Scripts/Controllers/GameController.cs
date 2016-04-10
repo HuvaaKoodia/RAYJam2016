@@ -91,8 +91,10 @@ public class GameController : MonoBehaviour
 			//gameplay state
 			if (state == 1)
 			{
-				Music.volume = 1f;
-				Music.Play ();
+				if (!Music.isPlaying) {
+					Music.volume = 1f;
+					Music.Play ();
+				}
 				Player.SetInputEnabled(true);
 
 				RoundTime = 10f;
@@ -151,7 +153,7 @@ public class GameController : MonoBehaviour
 			//intermission state
 			if (state == 2)
 			{
-				StartCoroutine (FadeMusicVolume());
+				//StartCoroutine (FadeMusicVolume());
 
 				Player.SetInputEnabled (false);
 

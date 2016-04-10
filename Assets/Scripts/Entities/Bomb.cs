@@ -17,28 +17,22 @@ public class Bomb : MonoBehaviour
     {
         yield return new WaitForSeconds(Lifetime);
         
-        Destroy(gameObject);
-
-
 		BombExplodeAudio.Play();
 		BombExplodeAudio.transform.SetParent(null, true);
-    }
 
+		//DESTROY ENEMIESdw
+		var enemies = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, Layers.Enemy);
 
-    void OnDestroy()
-    {
-        //DESTROY ENEMIESdw
-        var enemies = Physics2D.OverlapCircleAll(transform.position, ExplosionRadius, Layers.Enemy);
-
-        for (int i = 0; i < enemies.Length; i++)
-        {
+		for (int i = 0; i < enemies.Length; i++)
+		{
 			var enemy = enemies [i].GetComponent<EnemyMovement> ();
 			enemy.Die (true);
-        }
-        //SHAKE
-        CameraControl.I.StartShake(shakeDuration, shakeIntensity);
+		}
+		//SHAKE
+		CameraControl.I.StartShake(shakeDuration, shakeIntensity);
 
-        //PARTICLES
-        Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+		//PARTICLES
+		Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
     }
+
 }
